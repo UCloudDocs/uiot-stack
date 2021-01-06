@@ -1,5 +1,5 @@
 
-* [概览。](/uiot-stack/README)
+* [概览](/uiot-stack/README)
 * [产品简介](/uiot-stack/产品简介/)
     * [产品介绍](/uiot-stack/产品简介/产品介绍)
     * [功能介绍](/uiot-stack/产品简介/功能介绍)
