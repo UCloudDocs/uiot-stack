@@ -38,6 +38,11 @@
 		* [网关功能概述](/uiot-stack/控制台操作指南/网关管理/网关功能概述)
 		* [软件安装](/uiot-stack/控制台操作指南/网关管理软件安装)
 		* [子设备管理](/uiot-stack/控制台操作指南/网关管理/子设备管理)
+		* 设备驱动
+			* [设备驱动概览](/uiot-stack/控制台操作指南/网关管理/设备驱动/设备驱动概览)
+			* [驱动开发及添加](/uiot-stack/控制台操作指南/网关管理/设备驱动/驱动开发及添加)
+			* [分配驱动](/uiot-stack/控制台操作指南/网关管理/设备驱动/分配驱动)
+			* [子设备接入协议](/uiot-stack/控制台操作指南/网关管理/设备驱动/子设备接入协议)
 		* [远程访问](/uiot-stack/控制台操作指南/网关管理/远程访问)
 	* [监控视图](/uiot-stack/控制台操作指南/监控视图)
 	* [日志管理](/uiot-stack/控制台操作指南/日志管理)
@@ -45,6 +50,17 @@
 	* [API列表](/uiot-stack/IoT平台开发指南/API列表)
 	* [产品管理](/uiot-stack/IoT平台开发指南/产品管理)
 	* [设备管理](/uiot-stack/IoT平台开发指南/设备管理)
+* 边缘端开发
+
+  * 子设备驱动SDK
+    * [子设备驱动SDK概述](/uiot-stack/边缘端开发/子设备驱动SDK/子设备驱动SDK概述)
+    * [Python3 SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/Python3 SDK使用)
+    * [C SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/C SDK使用)
+* 官方驱动
+  
+    * [官方Modbus驱动（Python）](/uiot-stack/边缘端开发/官方驱动/官方Modbus驱动（Python）)
+    * [官方Modbus驱动（C）](/uiot-stack/边缘端开发/官方驱动/官方Modbus驱动（C)
+    * [官方DLT 645驱动（C）](/uiot-stack/边缘端开发/官方驱动/官方DLT 645驱动（C）)
 * 快速入门
 * 最佳实践
 * OPEN API操作指南
