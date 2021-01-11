@@ -42,8 +42,8 @@
 	* [监控视图](/uiot-stack/控制台操作指南/监控视图)
 	* [日志管理](/uiot-stack/控制台操作指南/日志管理)
 * IoT平台开发指南
-	* [API列表](/uiot-stack/控制台操作指南/API列表)
-	* [产品管理](/uiot-stack/控制台操作指南/产品管理)
+	* [API列表](/uiot-stack/IoT平台开发指南/API列表)
+	* [产品管理](/uiot-stack/IoT平台开发指南/产品管理)
 * 快速入门
 * 最佳实践
 * OPEN API操作指南
