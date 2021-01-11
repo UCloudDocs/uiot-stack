@@ -1,11 +1,10 @@
 # API列表
 
 ## 产品管理
+* [创建产品](../产品管理/?id=创建产品)   
 
-| API名称                                                      | 描述                       |
-| ------------------------------------------------------------ | -------------------------- |
-| [CreateUIoTCoreProduct](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=createuiotcoreproduct) | 创建物联网产品             |
-| [GetUIoTCoreProductInfo](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=getuiotcoreproductinfo) | 获取产品信息               |
+
+
 | [ModifyUIoTCoreProduct](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=modifyuiotcoreproduct) | 修改物联网产品             |
 | [DeleteUIoTCoreProduct](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=deleteuiotcoreproduct) | 删除物联网产品             |
 | [GetUIoTCoreProductList](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=getuiotcoreproductlist) | 获取产品信息列表           |
@@ -161,3 +160,10 @@
 | API名称                                                      | 描述                     |
 | ------------------------------------------------------------ | ------------------------ |
 | [GetUIoTCoreDeviceResourceData](https://docs.ucloud.cn/uiot-edge/api_list/remote_maintaince?id=getuiotcoredeviceresourcedata) | 获取网关设备监控资源数据 |
+
+
+
+
+
+
+
