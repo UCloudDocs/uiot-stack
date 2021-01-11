@@ -1,17 +1,48 @@
 # API列表
 
-## 产品管理
-* [创建产品](uiot-stack/IoT平台开发指南/产品管理?id=创建产品)   
+**产品管理**
+
+| 功能名称                                                     | 链接                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 创建产品                                                     | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=创建产品)  |
+| 获取产品列表                                                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=获取产品列表) |
+| 修改产品                                                     | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=修改产品)  |
+| 删除产品                                                     | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=删除产品)  |
+| 获取产品信息                                                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=获取产品信息) |
+| 发布产品                                                     | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=发布产品)  |
+| 开启动态注册                                                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=开启动态注册) |
+| 开启预认证                                                   | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=开启预认证) |
+| 重置产品密钥                                                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=重置产品密钥) |
 
 
 
-| [ModifyUIoTCoreProduct](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=modifyuiotcoreproduct) | 修改物联网产品             |
-| [DeleteUIoTCoreProduct](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=deleteuiotcoreproduct) | 删除物联网产品             |
-| [GetUIoTCoreProductList](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=getuiotcoreproductlist) | 获取产品信息列表           |
-| [EnableUIoTCoreDynamicRegister](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=enableuiotcoredynamicregister) | 打开产品下设备动态注册功能 |
-| [DisableUIoTCoreDynamicRegister](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=disableuiotcoredynamicregister) | 禁用产品下设备动态注册     |
-| [PublishUIoTCoreProduct](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=publishuiotcoreproduct) | 发布产品                   |
-| [UnpublishUIoTCoreProduct](https://docs.ucloud.cn/uiot-core/api_guide/productmgmtapi?id=unpublishuiotcoreproduct) | 撤销发布产品               |
+**设备管理**
+
+| 功能名称                     | 链接                                                         |
+| ---------------------------- | ------------------------------------------------------------ |
+| 添加设备                     | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=添加设备)  |
+| 批量随机添加设备             | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=批量随机添加设备) |
+| 批量录入设备序列号并添加设备 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=批量录入设备序列号并添加设备) |
+| 获取设备信息                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=获取设备信息) |
+| 获取设备列表                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=获取设备列表) |
+| 修改设备信息                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=修改设备信息) |
+| 删除设备                     | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=删除设备)  |
+| 批量删除设备                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=批量删除设备) |
+| 重置设备状态                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=重置设备状态) |
+| 批量禁用启用设备                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=批量禁用启用设备) |
+| 获取未激活设备密钥                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=获取未激活设备密钥) |
+| 获取子设备列表                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=获取子设备列表) |
+| 获取网关设备列表                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=获取网关设备列表) |
+| 获取网关信息                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=获取网关信息) |
+| 获取子设备信息                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=获取子设备信息) |
+| 远程访问开关                 | [查看链接](uiot-stack/IoT平台开发指南/产品管理?id=远程访问开关) |
+
+
+
+
+
+
+
 
 ## 设备管理
 

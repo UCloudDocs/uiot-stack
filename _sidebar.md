@@ -44,6 +44,7 @@
 * IoT平台开发指南
 	* [API列表](/uiot-stack/IoT平台开发指南/API列表)
 	* [产品管理](/uiot-stack/IoT平台开发指南/产品管理)
+	* [设备管理](/uiot-stack/IoT平台开发指南/设备管理)
 * 快速入门
 * 最佳实践
 * OPEN API操作指南
