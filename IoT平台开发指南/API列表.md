@@ -1,6 +1,6 @@
 # API列表
 
-**产品管理**
+## 产品管理
 
 | 功能名称                                                     | 链接                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -16,7 +16,7 @@
 
 
 
-**设备管理**
+## 设备管理
 
 | 功能名称                     | 链接                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
@@ -42,38 +42,15 @@
 
 
 
+## Topic管理
 
-
-## 设备管理
-
-| API名称                                                      | 描述                                         |
-| ------------------------------------------------------------ | -------------------------------------------- |
-| [CreateUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=createuiotcoredevice) | 创建物联网设备                               |
-| [GetUIoTCoreDeviceInfo](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=getuiotcoredeviceinfo) | 获取设备信息                                 |
-| [ModifyUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=modifyuiotcoredevice) | 修改物联网设备                               |
-| [DeleteUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=deleteuiotcoredevice) | 删除设备                                     |
-| [EnableUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=enableuiotcoredevice) | 启用设备                                     |
-| [DisableUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=disableuiotcoredevice) | 禁用设备                                     |
-| [BatchCreateUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=batchcreateuiotcoredevice) | 批量创建物联网设备                           |
-| [BatchCreateUIoTCoreDeviceWithSN](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=batchcreateuiotcoredevicewithsn) | 批量创建物联网设备                           |
-| [BatchDeleteUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=batchdeleteuiotcoredevice) | 批量删除设备                                 |
-| [BatchEnableUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=batchenableuiotcoredevice) | 批量启用设备                                 |
-| [BatchDisableUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=batchdisableuiotcoredevice) | 批量禁用设备                                 |
-| [ResetUIoTCoreDevice](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=resetuiotcoredevice) | 重置设备激活状态                             |
-| [GetUIoTCoreDeviceList](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=getuiotcoredevicelist) | 获取单个或批量设备状态、设备详情、设备列表等 |
-| [GetUIoTCoreInactivatedDevicePasswordFile](https://docs.ucloud.cn/uiot-core/api_guide/devicemgmtapi?id=getuiotcoreinactivateddevicepasswordfile) | 获取未激活设备的密码文件                     |
-
-
-
-## 主题管理
-
-| API名称                                                      | 描述              |
-| ------------------------------------------------------------ | ----------------- |
-| [CreateUIoTCoreProductTopic](https://docs.ucloud.cn/uiot-core/api_guide/topicmgmt?id=createuiotcoreproducttopic) | 创建产品Topic     |
-| [ModifyUIoTCoreProductTopic](https://docs.ucloud.cn/uiot-core/api_guide/topicmgmt?id=modifyuiotcoreproducttopic) | 修改产品Topic     |
-| [DeleteUIoTCoreProductTopic](https://docs.ucloud.cn/uiot-core/api_guide/topicmgmt?id=deleteuiotcoreproducttopic) | 删除产品Topic     |
-| [GetUIoTCoreProductTopicList](https://docs.ucloud.cn/uiot-core/api_guide/topicmgmt?id=getuiotcoreproducttopiclist) | 获取产品topic列表 |
-
+| 功能名称      | 链接                                                         |
+| ------------- | ------------------------------------------------------------ |
+| 创建Topic     | [查看链接](uiot-stack/IoT平台开发指南/Topic管理?id=创建Topic) |
+| 获取Topic列表 | [查看链接](uiot-stack/IoT平台开发指南/Topic管理?id=获取Topic列表) |
+| 修改Topic     | [查看链接](uiot-stack/IoT平台开发指南/Topic管理?id=修改Topic) |
+| 删除Topic     | [查看链接](uiot-stack/IoT平台开发指南/Topic管理?id=删除Topic) |
+| 获取Topic详情     | [查看链接](uiot-stack/IoT平台开发指南/Topic管理?id=获取Topic详情) |
 
 
 ## 消息通信
@@ -129,29 +106,30 @@
 
 
 
+
+
 ## 子设备驱动与接入
 
-| API名称                                                      | 描述                     |
-| ------------------------------------------------------------ | ------------------------ |
-| [CreateUIoTCoreDriver](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=createuiotcoredriver) | 创建驱动                 |
-| [DeleteUIoTCoreDriver](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=deleteuiotcoredriver) | 删除驱动                 |
-| [ModifyUIoTCoreDriver](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=modifyuiotcoredriver) | 修改驱动                 |
-| [GetUIoTCoreDriverInfo](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=getuiotcoredriverinfo) | 获取驱动信息             |
-| [GetUIoTCoreDriverList](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=getuiotcoredriverlist) | 获取驱动列表             |
-| [GetUIoTCoreDriverUpdateURL](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=getuiotcoredriverupdateurl) | 获取驱动更新上传的URL    |
-| [GetUIoTCoreDriverUploadURL](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=getuiotcoredriveruploadurl) | 获取驱动上传URL          |
-| [CreateUIoTCoreEdgeDriverBind](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=createuiotcoreedgedriverbind) | 网关绑定驱动             |
-| [CreateUIoTCoreMultiDriverBind](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=createuiotcoremultidriverbind) | 批量绑定网关和驱动       |
-| [GetUIoTCoreEdgeDriverList](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=getuiotcoreedgedriverlist) | 获取网关绑定驱动列表     |
-| [DeleteUIoTCoreEdgeDriverBind](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=deleteuiotcoreedgedriverbind) | 删除网关和驱动绑定       |
-| [GetUIoTCoreBindableProductList](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=getuiotcorebindableproductlist) | 获取可绑定产品列表       |
-| [GetUIoTCoreBindableDeviceList](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=getuiotcorebindabledevicelist) | 获取可绑定设备列表       |
-| [CreateUIoTCoreDriverSubDevBind](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=createuiotcoredriversubdevbind) | 驱动绑定子设备           |
-| [CreateUIoTCoreMultiSubDevBind](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=createuiotcoremultisubdevbind) | 批量创建驱动和子设备绑定 |
-| [GetUIoTCoreDriverSubDevList](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=getuiotcoredriversubdevlist) | 获取驱动子设备列表       |
-| [DeleteUIoTCoreDriverSubBind](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=deleteuiotcoredriversubbind) | 删除驱动和子设备绑定     |
-| [ModifyUIoTCoreEdgeDriverConf](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=modifyuiotcoreedgedriverconf) | 修改网关驱动配置         |
-| [ModifyUIoTCoreDriverSubDevConf](https://docs.ucloud.cn/uiot-edge/api_list/subdev_driver_access?id=modifyuiotcoredriversubdevconf) | 修改驱动的子设备配置     |
+| 功能名称                     | 链接                                                         |
+| ---------------------------- | ------------------------------------------------------------ |
+| 创建驱动                     | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=创建驱动) |
+| 上传驱动文件                 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=上传驱动文件) |
+| 更新驱动信息                 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=更新驱动信息) |
+| 更新驱动信息及文件           | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=更新驱动信息及文件) |
+| 删除驱动                     | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=删除驱动) |
+| 批量删除驱动                 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=批量删除驱动) |
+| 获取驱动列表                 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=获取驱动列表) |
+| 获取驱动信息                 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=获取驱动信息) |
+| 获取可绑定驱动列表           | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=获取可绑定驱动列表) |
+| 设备驱动绑定                 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=设备驱动绑定) |
+| 设备驱动解除绑定             | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=设备驱动解除绑定) |
+| 更新驱动配置                 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=更新驱动配置) |
+| 网关驱动列表                 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=网关驱动列表) |
+| 获取网关驱动可绑定子设备列表 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=获取网关驱动可绑定子设备列表) |
+| 网关驱动绑定子设备           | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=网关驱动绑定子设备) |
+| 网关驱动解除绑定子设备       | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=网关驱动解除绑定子设备) |
+| 更新设备配置                 | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=更新设备配置) |
+| 驱动子设备列表               | [查看链接](uiot-stack/IoT平台开发指南/设备驱动与接入?id=驱动子设备列表) |
 
 
 
