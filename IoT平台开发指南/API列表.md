@@ -55,6 +55,15 @@
 
 ## 消息通信
 
+| API名称          | 描述                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Publish MQTT消息 | [查看链接](uiot-stack/IoT平台开发指南/消息通信?id=Publish_MQTT消息) |
+| RRPC消息         | [查看链接](uiot-stack/IoT平台开发指南/消息通信?id=RRPC消息)  |
+
+
+
+
+
 | API名称                                                      | 描述             |
 | ------------------------------------------------------------ | ---------------- |
 | [PublishUIoTCoreMQTTMessage](https://docs.ucloud.cn/uiot-core/api_guide/messagemgmtapi?id=publishuiotcoremqttmessage) | Publish MQTT消息 |
