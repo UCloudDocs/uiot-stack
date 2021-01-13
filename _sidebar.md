@@ -56,6 +56,7 @@
 	* [产品管理](/uiot-stack/IoT平台开发指南/产品管理)
 	* [设备管理](/uiot-stack/IoT平台开发指南/设备管理)
 	* [Topic管理](/uiot-stack/IoT平台开发指南/Topic管理)
+	* [消息通信](/uiot-stack/IoT平台开发指南/消息通信)
 	* [设备驱动与接入](/uiot-stack/IoT平台开发指南/设备驱动与接入)
 * 边缘端开发
 	* 子设备驱动SDK
