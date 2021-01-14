@@ -1,5 +1,7 @@
 # API列表
 
+
+
 ## 产品管理
 
 | 功能名称                                                     | 链接                                                         |
@@ -40,8 +42,6 @@
 
 
 
-
-
 ## Topic管理
 
 | 功能名称      | 链接                                                         |
@@ -53,9 +53,10 @@
 | 获取Topic详情     | [查看链接](uiot-stack/IoT平台开发指南/Topic管理?id=获取Topic详情) |
 
 
+
 ## 消息通信
 
-| API名称          | 描述                                                         |
+| 功能名称         | 链接                                                          |
 | ---------------- | ------------------------------------------------------------ |
 | Publish MQTT消息 | [查看链接](uiot-stack/IoT平台开发指南/消息通信?id=Publish_MQTT消息) |
 | RRPC消息         | [查看链接](uiot-stack/IoT平台开发指南/消息通信?id=RRPC消息)  |
@@ -63,57 +64,47 @@
 
 
 
-
-| API名称                                                      | 描述             |
-| ------------------------------------------------------------ | ---------------- |
-| [PublishUIoTCoreMQTTMessage](https://docs.ucloud.cn/uiot-core/api_guide/messagemgmtapi?id=publishuiotcoremqttmessage) | Publish MQTT消息 |
-| [BroadcastUIoTCoreMQTTMessage](https://docs.ucloud.cn/uiot-core/api_guide/messagemgmtapi?id=broadcastuiotcoremqttmessage) | 广播消息         |
-| [PublishUIoTCoreMQTTMessage](https://docs.ucloud.cn/uiot-core/api_guide/messagemgmtapi?id=publishuiotcoremqttmessage) | RRPC             |
-| [BroadcastUIoTCoreMQTTMessage](https://docs.ucloud.cn/uiot-core/api_guide/messagemgmtapi?id=broadcastuiotcoremqttmessage) | 广播消息         |
-
-
-
-
 ## 规则引擎
 
-| API名称                                                      | 描述               |
-| ------------------------------------------------------------ | ------------------ |
-| [CreateUIoTCoreRule](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=createuiotcorerule) | 创建规则           |
-| [GetUIoTCoreRuleList](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=getuiotcorerulelist) | 获取规则列表       |
-| [ModifyUIoTCoreRule](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=modifyuiotcorerule) | 修改规则           |
-| [DeleteUIoTCoreRule](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=deleteuiotcorerule) | 删除规则           |
-| [EnableUIoTCoreRule](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=enableuiotcorerule) | 启用规则           |
-| [DisableUIoTCoreRule](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=disableuiotcorerule) | 禁用规则           |
-| [CreateUIoTCoreRuleAction](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=createuiotcoreruleaction) | 创建规则Action     |
-| [GetUIoTCoreRuleActionList](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=getuiotcoreruleactionlist) | 获取规则Action列表 |
-| [ModifyUIoTCoreRuleAction](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=modifyuiotcoreruleaction) | 修改规则Action     |
-| [DeleteUIoTCoreRuleAction](https://docs.ucloud.cn/uiot-core/api_guide/ruleeneinmgmt?id=deleteuiotcoreruleaction) | 删除规则Action     |
+| 功能名称      | 链接                                                         |
+| ------------ | ------------------------------------------------------------ |
+| 创建规则     | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=创建规则)  |
+| 获取规则列表 | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=获取规则列表) |
+| 修改规则     | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=修改规则)  |
+| 删除规则     | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=删除规则)  |
+| 启用规则     | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=启用规则)  |
+| 禁用规则     | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=禁用规则)  |
+| 获取规则信息 | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=获取规则信息) |
+| 创建动作     | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=创建动作)  |
+| 获取动作列表 | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=获取动作列表) |
+| 修改动作     | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=修改动作)  |
+| 测试动作     | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=测试动作)  |
+| 删除动作     | [查看链接](uiot-stack/IoT平台开发指南/规则引擎?id=删除动作)  |
 
 
 
 ## 网关及子设备
 
-| API名称                                                      | 描述               |
-| ------------------------------------------------------------ | ------------------ |
-| [AddUIoTCoreSubDeviceTopo](https://docs.ucloud.cn/uiot-edge/api_list/gateway_subdevice?id=adduiotcoresubdevicetopo) | 添加子设备拓扑     |
-| [DeleteUIoTCoreSubDeviceTopo](https://docs.ucloud.cn/uiot-edge/api_list/gateway_subdevice?id=deleteuiotcoresubdevicetopo) | 删除子设备拓扑     |
-| [GetUIoTCoreEdgeList](https://docs.ucloud.cn/uiot-edge/api_list/gateway_subdevice?id=getuiotcoreedgelist) | 获取边缘网关列表   |
-| [GetUIoTCoreGatewayBySubDevice](https://docs.ucloud.cn/uiot-edge/api_list/gateway_subdevice?id=getuiotcoregatewaybysubdevice) | 获取子设备网关信息 |
-| [GetUIoTCoreSubDeviceList](https://docs.ucloud.cn/uiot-edge/api_list/gateway_subdevice?id=getuiotcoresubdevicelist) | 获取子设备列表     |
+| 功能名称                       | 链接                                                         |
+| ---------------------------- | ------------------------------------------------------------ |
+| 获取网关可绑定子设备产品列表 | [查看链接](uiot-stack/IoT平台开发指南/网关及子设备?id=获取网关可绑定子设备产品列表) |
+| 获取网关可绑定子设备列表     | [查看链接](uiot-stack/IoT平台开发指南/网关及子设备?id=获取网关可绑定子设备列表) |
+| 批量绑定网关子设备           | [查看链接](uiot-stack/IoT平台开发指南/网关及子设备?id=批量绑定网关子设备) |
+| 批量解绑网关子设备           | [查看链接](uiot-stack/IoT平台开发指南/网关及子设备?id=批量解绑网关子设备) |
+| 获取网关子设备列表           | [查看链接](uiot-stack/IoT平台开发指南/网关及子设备?id=获取网关子设备列表) |
+| 获取网关子设备产品列表       | [查看链接](uiot-stack/IoT平台开发指南/网关及子设备?id=获取网关子设备产品列表) |
+| 获取网关子设备列表           | [查看链接](uiot-stack/IoT平台开发指南/网关及子设备?id=获取网关子设备列表) |
 
 
 
 ## 安装及部署
 
-| API名称                                                      | 描述                 |
-| ------------------------------------------------------------ | -------------------- |
-| [CreateUIoTCoreReinstall](https://docs.ucloud.cn/uiot-edge/api_list/install_deploy?id=createuiotcorereinstall) | 重装软件             |
-| [GetUIoTCoreReinstallInfo](https://docs.ucloud.cn/uiot-edge/api_list/install_deploy?id=getuiotcorereinstallinfo) | 获取设备网关安装信息 |
-| [CreateUIoTCoreEdgeDeployment](https://docs.ucloud.cn/uiot-edge/api_list/install_deploy?id=createuiotcoreedgedeployment) | 创建边缘部署任务     |
-| [GetUIoTCoreEdgeDeploymentInfo](https://docs.ucloud.cn/uiot-edge/api_list/install_deploy?id=getuiotcoreedgedeploymentinfo) | 获取边缘部署任务信息 |
-| [GetUIoTCoreEdgeDeploymentList](https://docs.ucloud.cn/uiot-edge/api_list/install_deploy?id=getuiotcoreedgedeploymentlist) | 获取边缘部署任务列表 |
-
-
+| 功能名称                                                      | 链接               |
+| ------------------------------------------------------------ | ------------------ |
+| 获取安装脚本 | [查看链接](uiot-stack/IoT平台开发指南/安装及部署?id=获取安装脚本) |
+|获取当前网关配置| [查看链接](uiot-stack/IoT平台开发指南/安装及部署?id=获取当前网关配置) |
+| 创建部署任务 | [查看链接](uiot-stack/IoT平台开发指南/安装及部署?id=创建部署任务) |
+| 获取部署状态信息 | [查看链接](uiot-stack/IoT平台开发指南/安装及部署?id=获取部署状态信息) |
 
 
 
@@ -142,44 +133,59 @@
 
 
 
-## 添加函数计算
+## 函数计算
 
-| API名称                                                      | 描述                 |
-| ------------------------------------------------------------ | -------------------- |
-| [CreateUIoTCoreFunction](https://docs.ucloud.cn/uiot-edge/api_list/edge_computing?id=createuiotcorefunction) | 创建函数             |
-| [DeleteUIoTCoreFunction](https://docs.ucloud.cn/uiot-edge/api_list/edge_computing?id=deleteuiotcorefunction) | 删除函数             |
-| [UpdateUIoTCoreFunction](https://docs.ucloud.cn/uiot-edge/api_list/edge_computing?id=updateuiotcorefunction) | 更新函数             |
-| [GetUIoTCoreFunctionList](https://docs.ucloud.cn/uiot-edge/api_list/edge_computing?id=getuiotcorefunctionlist) | 获取函数列表         |
-| [BindUIoTCoreFunctionToEdge](https://docs.ucloud.cn/uiot-edge/api_list/edge_computing?id=binduiotcorefunctiontoedge) | 绑定函数至边缘网关   |
-| [GetUIoTCoreEdgeFunctionList](https://docs.ucloud.cn/uiot-edge/api_list/edge_computing?id=getuiotcoreedgefunctionlist) | 获取边缘网关函数列表 |
-| [UnBindUIoTCoreFunctionFromEdge](https://docs.ucloud.cn/uiot-edge/api_list/edge_computing?id=unbinduiotcorefunctionfromedge) | 将函数从边缘网关解绑 |
-
-
-
-## 添加本地应用
-
+| 功能名称           | 链接                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| 创建函数           | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=创建函数)  |
+| 更新函数           | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=更新函数)  |
+| 获取函数列表       | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=获取函数列表) |
+| 删除函数           | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=删除函数)  |
+| 绑定函数到网关设备 | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=绑定函数到网关设备) |
+| 从网关解绑函数     | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=从网关解绑函数) |
+| 获取可绑定函数列表 | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=获取可绑定函数列表) |
+| 获取已绑定函数列表 | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=获取已绑定函数列表) |
+| 获取函数详情       | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=获取函数详情) |
+| 更改函数配置       | [查看链接](uiot-stack/IoT平台开发指南/函数计算?id=更改函数配置) |
 
 
 
+## 本地应用
 
-## 设置消息路由
+| 功能名称           | 链接                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| 创建应用           | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=创建应用)  |
+| 上传应用文件       | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=上传应用文件) |
+| 更新应用信息       | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=更新应用信息) |
+| 更新应用信息及文件 | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=更新应用信息及文件) |
+| 删除应用           | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=删除应用)  |
+| 获取应用列表       | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=获取应用列表) |
+| 获取可绑定应用列表 | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=获取可绑定应用列表) |
+| 设备应用绑定       | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=设备应用绑定) |
+| 更新应用配置       | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=更新应用配置) |
+| 网关应用列表       | [查看链接](uiot-stack/IoT平台开发指南/本地应用?id=网关应用列表) |
 
-| API名称                                                      | 描述             |
-| ------------------------------------------------------------ | ---------------- |
-| [CreateUIoTCoreMessageRouter](https://docs.ucloud.cn/uiot-edge/api_list/message_route?id=createuiotcoremessagerouter) | 增加消息路由     |
-| [DeleteUIoTCoreMessageRouter](https://docs.ucloud.cn/uiot-edge/api_list/message_route?id=deleteuiotcoremessagerouter) | 删除消息路由     |
-| [GetUIoTCoreMessageRouterList](https://docs.ucloud.cn/uiot-edge/api_list/message_route?id=getuiotcoremessagerouterlist) | 获取消息路由列表 |
-| [ModifyUIoTCoreMessageRouter](https://docs.ucloud.cn/uiot-edge/api_list/message_route?id=modifyuiotcoremessagerouter) | 修改消息路由     |
+
+
+## 消息路由
+
+| 功能名称                                                      | 链接               |
+| ------------------------------------------------------------ | ------------------ |
+| 创建消息路由 | [查看链接](uiot-stack/IoT平台开发指南/消息路由?id=创建消息路由) |
+|修改消息路由| [查看链接](uiot-stack/IoT平台开发指南/消息路由?id=修改消息路由) |
+| 删除消息路由 | [查看链接](uiot-stack/IoT平台开发指南/消息路由?id=删除消息路由) |
+| 获取消息路由详情 | [查看链接](uiot-stack/IoT平台开发指南/消息路由?id=获取消息路由详情) |
+| 获取消息路由列表 | [查看链接](uiot-stack/IoT平台开发指南/消息路由?id=获取消息路由列表) |
+
 
 
 
 ## 远程运维管理
 
-| API名称                                                      | 描述                     |
-| ------------------------------------------------------------ | ------------------------ |
-| [GetUIoTCoreDeviceResourceData](https://docs.ucloud.cn/uiot-edge/api_list/remote_maintaince?id=getuiotcoredeviceresourcedata) | 获取网关设备监控资源数据 |
-
-
+| 功能名称                                                      | 链接               |
+| ------------------------------------------------------------ | ------------------ |
+| 请求远程SSH登录 | [查看链接](uiot-stack/IoT平台开发指南/远程运维管理?id=请求远程SSH登录) |
+|Websocket连接| [查看链接](uiot-stack/IoT平台开发指南/远程运维管理?id=Websocket连接) |
 
 
 
