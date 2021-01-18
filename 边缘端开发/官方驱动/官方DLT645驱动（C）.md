@@ -72,7 +72,7 @@ DL/T 645官方驱动目前支持数据的读取，用户通过自定义数据标
             "write_reply_topic": "/{}/{}/upload",
             "mode": "cycle"
         }
-    }CopyErrorSuccess
+    }
 ```
 
 - channel: { channel1，channel2, ... } 表示不同的通道，名称可以自定义。
@@ -122,7 +122,7 @@ DL/T 645官方驱动目前支持数据的读取，用户通过自定义数据标
           "SumPower":9873.34
       }
     "timestamp": 1597026387
-  }CopyErrorSuccess
+  }
   ```
 
 - 下行
@@ -149,10 +149,9 @@ DL/T 645官方驱动目前支持数据的读取，用户通过自定义数据标
         }                                                   
     }                                                      
   }
-  CopyErrorSuccess
   ```
-
-  - password: 必填，表示操作密码，四字节16进制
+  
+- password: 必填，表示操作密码，四字节16进制
   - opt_code: 必填，表示操作码，四字节16进制
   - effect_time: 操作电表必填，表示命令有效截止时间，格式“YYMMDDHHMMSS”六字节16进制，0x200916114050表示2020年09月16日11点40分50秒
   - writedata: 写数据必填，表示要写的数据，16进制
@@ -166,11 +165,9 @@ DL/T 645官方驱动目前支持数据的读取，用户通过自定义数据标
     "channel":"ttyUSB0",
     "config":"dlt645_config",
     "address":123456780018
-}CopyErrorSuccess
+}
 ```
 
 - channel：必填，选择使用驱动配置中的哪个通道
 - config：必填，选择使用驱动配置中的那个属性集合
 - address：必填，设置该子设备的地址，实际BCD码地址
-
-1. 

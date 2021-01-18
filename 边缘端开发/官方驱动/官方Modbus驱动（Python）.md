@@ -124,7 +124,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
         "topic": "/{}/{}/upload",
         "mode": "cycle"
     }
-}CopyErrorSuccess
+}
 ```
 
 - channel: { channel1，channel2, ... } 表示不同的通道的自定义名称及Modbus报文格式。通道的配置分为数据传输层（method）和数据报文表示层（format）。通过数据传输层和数据报文表示层的不同组合可以组合成“Modbus RTU”，“Modbus ASCII”，“Modbus TCP”，“Modbus RTU over TCP”等不同形式。
@@ -191,7 +191,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
           "input4": true
       },
       "timestamp": 1597026387
-  }CopyErrorSuccess
+  }
   ```
 
 - 下行
@@ -209,7 +209,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
       "device": {
           "coil1_coil2": [true, false]
       }
-  }CopyErrorSuccess
+  }
   ```
 
 #### format字段--报文格式介绍
@@ -218,7 +218,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
 
 ```
  [ Start Wait ] [Address ][ Function Code] [ Data ][ CRC ][  End Wait  ]
-  3.5 chars       1b          1b               Nb     2b     3.5 charsCopyErrorSuccess
+  3.5 chars       1b          1b               Nb     2b     3.5 chars
 ```
 
 - 报文由时长至少3.5个字符时间的空间间隔区分
@@ -238,7 +238,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
 
 ```markup
 [ Start ][Address ][ Function ][ Data ][ LRC ][ End ]
-  1c         2c         2c        Nc      2c    2cCopyErrorSuccess
+  1c         2c         2c        Nc      2c    2c
 ```
 
 - 报文开头Start为英文冒号”:”（3A）
@@ -250,7 +250,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
 ```
 [         MBAP Header         ] [ Function Code] [ Data ] 
 [ tid ][ pid ][ length ][ uid ]
-  2b     2b     2b        1b           1b           NbCopyErrorSuccess
+  2b     2b     2b        1b           1b           Nb
 ```
 
 - MBAP为报文头，共计7字节
@@ -263,7 +263,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
 
 ```
 [ Start ][Address ][ Function ][ Data ][ CRC ][ End ]
-   1b        1b         1b        Nb      2b    1bCopyErrorSuccess
+   1b        1b         1b        Nb      2b    1b
 ```
 
 - 报文以'{'开始，以 '}'结束
@@ -286,7 +286,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
     "channel":"ttyUSB0",
     "config":"modbus_config",
     "slave_address":1
-}CopyErrorSuccess
+}
 ```
 
 - channel：必填，选择使用驱动配置中的哪个通道
