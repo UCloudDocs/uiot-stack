@@ -4,6 +4,54 @@ IoT平台使支持API调用以满足客户的业务需求。
 
 
 
+## API调用规范
+
+
+
+### HTTP请求头信息（HTTP Request Header）
+
+|参数名称|必选|类型|描述|
+|---|---|---|---|
+|Authorization|否|string|JWT Token,需访问认证的API时必填|
+|ProjectName|否|string|ProjectName,认证的除用户和项目API时必填|
+|Context-Type|否|application/json|Method:Post时必填，body必填|
+
+
+
+
+### HTTP响应头信息（HTTP Response Header）
+
+|参数名称|必选|类型|描述|
+|---|---|---|---|
+|Context-Type|是|application/json|返回的 Context Type类型|
+
+
+
+
+### HTTP响应消息体（HTTP Response Body）
+
+|参数名称|必选|类型|描述|
+|---|---|---|---|
+|Code|是|int|返回码（0，400，401，402, 500）|
+|Message|否|sting|返回错误信息|
+|Data|是|Any|响应数据|
+
+**HTTP响应码描述（HTTP Response Code）**
+
+|参数名称|描述|
+|---|---|
+|0||成功|
+|400|参数错误|
+|401|身份认证失败（Token错误，需返回登陆页面）|
+|402|权限认证失败（没有日志（或者相关模块的权限））|
+|500|内部服务器错误|
+
+
+
+
+
+
+
 ## API调用示例
 
 本节通过一个具体的示例（创建产品）介绍如何实现API调用。用户可将其中的参数换成自己的实际参数进行测试。API仅支持HTTPS调用。

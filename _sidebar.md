@@ -51,6 +51,7 @@
 	* [API列表](/uiot-stack/IoT平台开发指南/API列表)
 	* [产品及设备管理](/uiot-stack/IoT平台开发指南/产品及设备管理)
 	* [Topic管理](/uiot-stack/IoT平台开发指南/Topic管理)
+	* [数据解析](/uiot-stack/IoT平台开发指南/数据解析)
 	* [消息通信](/uiot-stack/IoT平台开发指南/消息通信)
 	* [规则引擎](/uiot-stack/IoT平台开发指南/规则引擎)
 	* 网关管理
