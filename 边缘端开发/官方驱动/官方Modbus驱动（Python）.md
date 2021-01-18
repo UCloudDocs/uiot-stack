@@ -1,4 +1,4 @@
-# 官方Modbus驱动（Python
+# 官方Modbus驱动（Python）
 
 [Modbus](http://www.modbus.org/tech.php)最早由Modicon公司（现在的施耐德电气 ）于1979年为使用可编程逻辑控制器（PLC）通信而发表。Modbus已经成为工业、能源、楼宇、农业领域通信协议的业界标准，目前是工业电子设备之间常用的连接方式。
 

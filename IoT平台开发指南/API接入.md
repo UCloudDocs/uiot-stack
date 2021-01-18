@@ -10,7 +10,7 @@ IoT平台使支持API调用以满足客户的业务需求。
 
 1. 概述   
 
-   接口的调用使用HTTPS GET或POST调用都可以得到相同的结果。调用的参数包括接口的参数+公共参数两部分。
+   接口的调用使用HTTPS GET或POST调用。调用的参数包括接口的参数+公共参数两部分。
    - 域名：可在IoT控制台平台参数中获取
    - 接口参数：某个具体接口需要的参数；
    - 公共参数：每个接口都需要用到的项目名（ProjectName）、Authorization（登录时获取的Token）
@@ -36,7 +36,7 @@ Authorization|用户登录时获取的Token
 
 4. 请求接口获取响应
 
-   通过HTTPS GET和POST都可以请求接口得到同样的响应结果
+   通过HTTPS GET或POST得到响应结果
 
    1）**通过GET方式**  
    ① 当参数中存在特殊字符时需要进行编码，编码的规则为：  
@@ -48,7 +48,7 @@ Authorization|用户登录时获取的Token
 
    ② 将请求参数转换成URL Params，拼接上Base URL进行GET请求：
      ```
-GET /api/v1/product/info?ProductID=yihyugtyfytft HTTP/1.1
+GET /api/v1/product/info?ProductSN=yihyugtyfytft HTTP/1.1
    Host: ${域名或IP}:8080
    Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VJRCI6MSwiUm9sZUlEIjoxLCJVc2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjAzODkzMzQ1LCJpc3MiOiJ1aW90IHN0YWNrLXVzZXIifQ.8ACQkiM6YSB4VgHJySGAlCQF_lTMsZ7dPo7F9xMwaWI
    ProjectName: default
