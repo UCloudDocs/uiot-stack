@@ -14,7 +14,7 @@
 1. 下载C SDK
 
 ```bash
-git clone https://github.com/ucloud/uiotedge-driver-sdk-c.gitCopyErrorSuccess
+git clone https://github.com/ucloud/uiotedge-driver-sdk-c.git
 ```
 
 1. 编写`main.c`文件
@@ -117,7 +117,7 @@ int main(int argc, char **argv)
         */
         status = edge_publish(topic_str, time_stamp);
     }
-}CopyErrorSuccess
+}
 ```
 
 1. 编译
@@ -126,7 +126,7 @@ int main(int argc, char **argv)
 // 更改路径到SDK根目录
 make
 // 生成可执行文件
-ls samples/uiot_edge_testCopyErrorSuccess
+ls samples/uiot_edge_test
 ```
 
 1. 打包驱动
@@ -134,7 +134,7 @@ ls samples/uiot_edge_testCopyErrorSuccess
    ```bash
    #打包驱动SDK，如有动态链接库，需要一起打包
    mv uiot_edge_test main
-   zip -r driver.zip mainCopyErrorSuccess
+   zip -r driver.zip main
    ```
 
 2. 上传驱动zip压缩包到驱动管理
@@ -150,7 +150,7 @@ ls samples/uiot_edge_testCopyErrorSuccess
 ### edge_common_init
 
 ```c
-edge_status edge_common_init(void)CopyErrorSuccess
+edge_status edge_common_init(void)
 ```
 
 C SDK驱动初始化，该函数必须要调用。
@@ -167,7 +167,7 @@ C SDK驱动初始化，该函数必须要调用。
 ### edge_get_driver_info
 
 ```c
-char * edge_get_driver_info(void)CopyErrorSuccess
+char * edge_get_driver_info(void)
 ```
 
 获取驱动配置信息。
@@ -183,7 +183,7 @@ char * edge_get_driver_info(void)CopyErrorSuccess
 ### edge_get_device_info
 
 ```c
-char * edge_get_device_info(void)CopyErrorSuccess
+char * edge_get_device_info(void)
 ```
 
 获取子设备列表及子设备配置。
@@ -203,13 +203,13 @@ char * edge_get_device_info(void)CopyErrorSuccess
           "deviceSN": "yyyyy",
           "config": {}
       }]
-  }CopyErrorSuccess
+  }
   ```
 
 ### edge_get_product_sn
 
 ```c
-char * edge_get_product_sn(void)CopyErrorSuccess
+char * edge_get_product_sn(void)
 ```
 
 获取网关的产品序列号。
@@ -225,7 +225,7 @@ char * edge_get_product_sn(void)CopyErrorSuccess
 ### edge_get_device_sn
 
 ```c
-char * edge_get_device_sn(void)CopyErrorSuccess
+char * edge_get_device_sn(void)
 ```
 
 获取网关的设备序列号。
@@ -241,7 +241,7 @@ char * edge_get_device_sn(void)CopyErrorSuccess
 ### edge_subdev_construct
 
 ```c
-subdev_client * edge_subdev_construct(const char *product_sn, const char *device_sn, edge_normal_msg_handler normal_msg_handle)CopyErrorSuccess
+subdev_client * edge_subdev_construct(const char *product_sn, const char *device_sn, edge_normal_msg_handler normal_msg_handle)
 ```
 
 创建一个子设备句柄。
@@ -261,7 +261,7 @@ subdev_client * edge_subdev_construct(const char *product_sn, const char *device
 ### edge_publish
 
 ```c
-edge_status edge_publish(const char *topic, const char *str)CopyErrorSuccess
+edge_status edge_publish(const char *topic, const char *str)
 ```
 
 向指定topic发布消息。
@@ -280,7 +280,7 @@ edge_status edge_publish(const char *topic, const char *str)CopyErrorSuccess
 ### edge_subdev_dynamic_auth
 
 ```c
-edge_status edge_subdev_dynamic_auth(subdev_client *pst_subdev_client, const char *product_secret, uint32_t time_out_ms)CopyErrorSuccess
+edge_status edge_subdev_dynamic_auth(subdev_client *pst_subdev_client, const char *product_secret, uint32_t time_out_ms)
 ```
 
 动态注册子设备，动态注册原理参考动态注册。
@@ -300,7 +300,7 @@ edge_status edge_subdev_dynamic_auth(subdev_client *pst_subdev_client, const cha
 ### edge_subdev_login_sync
 
 ```c
-edge_status edge_subdev_login_sync(subdev_client *pst_subdev_client, uint32_t time_out_ms)CopyErrorSuccess
+edge_status edge_subdev_login_sync(subdev_client *pst_subdev_client, uint32_t time_out_ms)
 ```
 
 子设备上线操作，同步接口。
@@ -319,7 +319,7 @@ edge_status edge_subdev_login_sync(subdev_client *pst_subdev_client, uint32_t ti
 ### edge_subdev_logout_sync
 
 ```c
-edge_status edge_subdev_logout_sync(subdev_client *pst_subdev_client, uint32_t time_out_ms)CopyErrorSuccess
+edge_status edge_subdev_logout_sync(subdev_client *pst_subdev_client, uint32_t time_out_ms)
 ```
 
 子设备下线操作，同步接口。
@@ -338,7 +338,7 @@ edge_status edge_subdev_logout_sync(subdev_client *pst_subdev_client, uint32_t t
 ### edge_subdev_login_async
 
 ```c
-edge_status edge_subdev_login_async(subdev_client *pst_subdev_client)CopyErrorSuccess
+edge_status edge_subdev_login_async(subdev_client *pst_subdev_client)
 ```
 
 子设备上线操作，异步接口，不关心成功与否。
@@ -356,7 +356,7 @@ edge_status edge_subdev_login_async(subdev_client *pst_subdev_client)CopyErrorSu
 ### edge_subdev_logout_async
 
 ```c
-edge_status edge_subdev_logout_async(subdev_client *pst_subdev_client)CopyErrorSuccess
+edge_status edge_subdev_logout_async(subdev_client *pst_subdev_client)
 ```
 
 子设备下线操作，异步接口，不关心成功与否。
@@ -374,7 +374,7 @@ edge_status edge_subdev_logout_async(subdev_client *pst_subdev_client)CopyErrorS
 ### edge_set_topo_notify_handle
 
 ```c
-void edge_set_topo_notify_handle(edge_topo_notify_handler topo_notify_handle)CopyErrorSuccess
+void edge_set_topo_notify_handle(edge_topo_notify_handler topo_notify_handle)
 ```
 
 设置子设备绑定关系发生改变后的回调函数。
@@ -388,7 +388,7 @@ void edge_set_topo_notify_handle(edge_topo_notify_handler topo_notify_handle)Cop
 回调函数：
 
 ```c
-void (*edge_topo_notify_handler)(topo_operation opera, char *payload)CopyErrorSuccess
+void (*edge_topo_notify_handler)(topo_operation opera, char *payload)
 ```
 
 - 返回值
@@ -397,7 +397,7 @@ void (*edge_topo_notify_handler)(topo_operation opera, char *payload)CopyErrorSu
 ### edge_set_subdev_status_handle
 
 ```c
-void edge_set_subdev_status_handle(edge_subdev_status_handler subdev_status_handle)CopyErrorSuccess
+void edge_set_subdev_status_handle(edge_subdev_status_handler subdev_status_handle)
 ```
 
 设置子设备启用/禁用的回调函数。
@@ -411,7 +411,7 @@ void edge_set_subdev_status_handle(edge_subdev_status_handler subdev_status_hand
 回调函数：
 
 ```c
-void (*edge_subdev_status_handler)(subdev_able opera,char *payload)CopyErrorSuccess
+void (*edge_subdev_status_handler)(subdev_able opera,char *payload)
 ```
 
 - 返回值
@@ -420,7 +420,7 @@ void (*edge_subdev_status_handler)(subdev_able opera,char *payload)CopyErrorSucc
 ### edge_get_online_status
 
 ```c
-bool edge_get_online_status(void)CopyErrorSuccess
+bool edge_get_online_status(void)
 ```
 
 获取当前边缘网关的在线状态。
@@ -431,7 +431,7 @@ bool edge_get_online_status(void)CopyErrorSuccess
 ### edge_get_topo
 
 ```c
-char *edge_get_topo(uint32_t time_out_ms)CopyErrorSuccess
+char *edge_get_topo(uint32_t time_out_ms)
 ```
 
 获取当前网关下的拓扑绑定关系。
@@ -458,7 +458,7 @@ char *edge_get_topo(uint32_t time_out_ms)CopyErrorSuccess
 ### edge_add_topo
 
 ```c
-edge_status edge_add_topo(subdev_client *pst_subdev_client, uint32_t time_out_ms)CopyErrorSuccess
+edge_status edge_add_topo(subdev_client *pst_subdev_client, uint32_t time_out_ms)
 ```
 
 添加拓扑绑定关系。
@@ -477,7 +477,7 @@ edge_status edge_add_topo(subdev_client *pst_subdev_client, uint32_t time_out_ms
 ### edge_delete_topo
 
 ```c
-edge_status edge_delete_topo(subdev_client *pst_subdev_client, uint32_t time_out_ms)CopyErrorSuccess
+edge_status edge_delete_topo(subdev_client *pst_subdev_client, uint32_t time_out_ms)
 ```
 
 删除拓扑绑定关系。
@@ -496,7 +496,7 @@ edge_status edge_delete_topo(subdev_client *pst_subdev_client, uint32_t time_out
 ### edge_set_log
 
 ```c
-edge_status edge_set_log(log_level level, uint32_t file_size_mb, uint32_t file_number)CopyErrorSuccess
+edge_status edge_set_log(log_level level, uint32_t file_size_mb, uint32_t file_number)
 ```
 
 设置日志记录等级，日志文件大小和文件个数（一天一个日志文件）。
@@ -516,7 +516,7 @@ edge_status edge_set_log(log_level level, uint32_t file_size_mb, uint32_t file_n
 ### log_write
 
 ```c
-void log_write(log_level level, const char *format,...)CopyErrorSuccess
+void log_write(log_level level, const char *format,...)
 ```
 
 记录日志。

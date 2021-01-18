@@ -116,7 +116,7 @@ if __name__ == "__main__":
     except BaseEdgeException:
         log.error('Edge Exception: {}'.format(str(e)))
     except Exception as e:
-        log.error('Exception error: {}'.format(str(e)))CopyErrorSuccess
+        log.error('Exception error: {}'.format(str(e)))
 ```
 
 1. 打包驱动
@@ -125,7 +125,7 @@ if __name__ == "__main__":
 #打包驱动SDK，"-t ."，表示下载python包到当前目录，用于打包上传到驱动管理
 pip3 install -t . iotedge_driver_link_sdk  
 pip3 install -t . jsonpath otherpackages #打包自己的依赖
-zip -r driver.zip .CopyErrorSuccess
+zip -r driver.zip
 ```
 
 > 打包需要同时包含所有依赖。
@@ -251,7 +251,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **SubDevice.logout(sync=False, timeout=5) 方法**
@@ -270,7 +270,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **SubDevice.set_msg_callback(msg_callback) 方法**
@@ -296,7 +296,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **SubDevice.publish(topic, payload)) 方法**
@@ -315,7 +315,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **SubDevice.registerDevice(timeout) 方法**
@@ -333,7 +333,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 ### iotedgedriverlinksdk.edge包
@@ -356,7 +356,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **set_on_topo_change_callback(callback) 函数**
@@ -399,7 +399,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **set_on_status_change_callback(callback)) 函数**
@@ -439,7 +439,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **get_topo(timeout=5)) 函数**
@@ -480,7 +480,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **add_topo(product_sn, device_sn, timeout=5) 函数**
@@ -500,7 +500,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **delete_topo(product_sn, device_sn, timeout=5) 函数**
@@ -521,7 +521,7 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
 - **get_edge_online_status() 函数**
@@ -539,6 +539,6 @@ zip -r driver.zip .CopyErrorSuccess
   异常示例：
 
   ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
