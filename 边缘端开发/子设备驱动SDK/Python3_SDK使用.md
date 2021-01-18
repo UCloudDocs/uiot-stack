@@ -11,7 +11,7 @@
 1. 下载Python3 SDK
 
 ```bash
- pip3 install uiotedge_driver_link_sdkCopyErrorSuccess
+ pip3 install iotedge_driver_link_sdk
 ```
 
 1. 创建`index.py`文件
@@ -24,9 +24,9 @@
    - 发布消息
 
 ```python
-from uiotedgedriverlinksdk.client import SubDevice, Config
-from uiotedgedriverlinksdk.exception import BaseEdgeException
-from uiotedgedriverlinksdk import getLogger
+from iotedgedriverlinksdk.client import SubDevice, Config
+from iotedgedriverlinksdk.exception import BaseEdgeException
+from iotedgedriverlinksdk import getLogger
 import logging
 import time
 import json
@@ -123,7 +123,7 @@ if __name__ == "__main__":
 
 ```bash
 #打包驱动SDK，"-t ."，表示下载python包到当前目录，用于打包上传到驱动管理
-pip3 install -t . uiotedge_driver_link_sdk  
+pip3 install -t . iotedge_driver_link_sdk  
 pip3 install -t . jsonpath otherpackages #打包自己的依赖
 zip -r driver.zip .CopyErrorSuccess
 ```
@@ -140,7 +140,7 @@ zip -r driver.zip .CopyErrorSuccess
 
 ## 驱动API介绍
 
-### uiotedgedriverlinksdk.client包
+### iotedgedriverlinksdk.client包
 
 #### Config()类
 
@@ -336,7 +336,7 @@ zip -r driver.zip .CopyErrorSuccess
   EdgeDriverLinkException:code=1000xx,msg=xxxxCopyErrorSuccess
   ```
 
-### uiotedgedriverlinksdk.edge包
+### iotedgedriverlinksdk.edge包
 
 - **register_device(product_sn, device_sn, product_secret, timeout=5) 函数**
 
