@@ -1,11 +1,5 @@
 <div class="sidebar_title icon__uiotstack"> UIoT Stack</div>      
 
-* [概览](/uiot-stack/README)
-* [产品简介](/uiot-stack/产品简介/)
-	* [产品介绍](/uiot-stack/产品简介/产品介绍)
-	* [功能介绍](/uiot-stack/产品简介/功能介绍)
-	* [名词解释](/uiot-stack/产品简介/名词解释)
-	* [使用限制](/uiot-stack/产品简介/使用限制)
 * 控制台操作指南
   * 账号及项目管理
   	* [账号登录](/uiot-stack/控制台操作指南/账号及项目管理/账号登录)
@@ -49,9 +43,8 @@
       * [控制台操作指南](/uiot-stack/控制台操作指南/网关管理/函数计算/控制台操作指南)
       * [函数功能开发及示例](/uiot-stack/控制台操作指南/网关管理/函数计算/函数功能开发及示例)
     * [远程访问](/uiot-stack/控制台操作指南/网关管理/远程访问)
-  * [监控视图](/uiot-stack/控制台操作指南/监控视图)
-  * [日志管理](/uiot-stack/控制台操作指南/日志管理)
 * IoT平台开发指南
+	* [API接入](/uiot-stack/IoT平台开发指南/API接入)
 	* [API列表](/uiot-stack/IoT平台开发指南/API列表)
 	* [产品管理](/uiot-stack/IoT平台开发指南/产品管理)
 	* [设备管理](/uiot-stack/IoT平台开发指南/设备管理)
@@ -74,12 +67,18 @@
 		* [官方Modbus驱动（Python）](/uiot-stack/边缘端开发/官方驱动/官方Modbus驱动（Python）)
 		* [官方Modbus驱动（C）](/uiot-stack/边缘端开发/官方驱动/官方Modbus驱动（C）)
 		* [官方DLT645驱动（C）](/uiot-stack/边缘端开发/官方驱动/官方DLT645驱动（C）)
-* 快速入门
-* 最佳实践
-* OPEN API操作指南
-* RRPC
-* 网关开发指南
-
+* 直连设备开发指南
+	* 设备注册
+		* [什么是设备注册](/uiot-stack/直连设备开发指南/设备注册/什么是设备注册)
+		* [静态注册](/uiot-stack/直连设备开发指南/设备注册/静态注册)
+		* [动态注册](/uiot-stack/直连设备开发指南/设备注册/动态注册)	
+	* 设备连接
+		* [基于MQTT-TCP协议建立连接](/uiot-stack/直连设备开发指南/设备连接/基于MQTT-TCP协议建立连接)
+		* [基于MQTT-WebSocket协议建立连接](/uiot-stack/直连设备开发指南/设备连接/基于MQTT-WebSocket协议建立连接)	
+	* C-SDK使用参考
+		* [HAL接口详细说明](/uiot-stack/直连设备开发指南/C-SDK使用参考/HAL接口详细说明)
+		* [MQTT与设备认证开发](/uiot-stack/直连设备开发指南/C-SDK使用参考/MQTT与设备认证开发)
+		* [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C-SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
 
 
 
