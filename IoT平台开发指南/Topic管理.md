@@ -22,7 +22,7 @@ Post Json 参数
 |DeviceIdentifier|是|string|Topic中设备身份标识(${DeviceSN},$broadcast)|
 |TopicSuffix|是|string|Topic后缀|
 |Description|是|sting|Topic描述|
-|Permission|是|string|Topic权限|
+|Permission|是|string|Topic权限 (发布:pub, 订阅:sub, 发布订阅:pubsub)|
 |ProductSN|是|string|ProductSN|
 
 
@@ -69,7 +69,7 @@ Host: localhost:8080
 |参数名称|必选|类型|描述|
 |---|---|---|---|
 |ProductSN|是|string|产品序列号|
-|TopicType|否|string|Topic类型（sys,user）|
+|TopicType|否|string|Topic类型筛选（sys,user）不传默认全部|
 |Offset|否|int|偏移量|
 |Limit|否|int|分页限制|
 
@@ -157,7 +157,7 @@ Post Json 参数
 |DeviceIdentifier|是|string|Topic中设备身份标识(${DeviceSN},$broadcast)|
 |TopicSuffix|是|string|Topic后缀|
 |Description|否|sting|Topic描述|
-|Permission|是|string|Topic权限|
+|Permission|是|string|Topic权限 (发布:pub, 订阅:sub, 发布订阅:pubsub)|
 
 
 ###### 返回
@@ -193,7 +193,7 @@ Post 参数
 |参数名称|必选|类型|描述|
 |---|---|---|---|
 |TopicID|是|[]uint64|TopicID数组|
-|ProductionID|是|uint64|产品ID|
+|ProductSN|是|string|ProductSN|
 
 
 ###### 返回
