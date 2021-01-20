@@ -376,7 +376,8 @@ zip -r driver.zip
 | -------------- | ------- | -------------------------- |
 | msg            | b:bytes | 绑定关系变化json格式字符串 |
 
-~~~markup
+
+
 - msg消息格式
 
 ```json
@@ -391,8 +392,8 @@ zip -r driver.zip
     }
   ]
 }
-```CopyErrorSuccess
-~~~
+```
+
 
 - 返回Exception
 
@@ -419,7 +420,7 @@ zip -r driver.zip
 | -------------- | ------- | ----------------------------- |
 | msg            | b:bytes | 启用/禁用下发的json格式字符串 |
 
-~~~markup
+
 - msg消息格式
 
 ```json
@@ -431,8 +432,8 @@ zip -r driver.zip
             "DeviceSN": "device1234"
     }]
 }
-```CopyErrorSuccess
-~~~
+```
+
 
 - 返回Exception
 
@@ -458,7 +459,7 @@ zip -r driver.zip
 | -------------- | ----------- | ---------------------- |
 | topoString     | Json String | 拓扑关系json数据字符串 |
 
-~~~markup
+
 - Json格式
 
 ```json
@@ -472,8 +473,8 @@ zip -r driver.zip
     }
   ]
 }
-```CopyErrorSuccess
-~~~
+```
+
 
 - 返回Exception
 
@@ -541,4 +542,5 @@ zip -r driver.zip
   ```
   EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
+
 
