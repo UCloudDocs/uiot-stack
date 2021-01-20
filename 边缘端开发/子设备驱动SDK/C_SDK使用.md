@@ -14,7 +14,7 @@
 1. 下载C SDK
 
 ```bash
-git clone https://github.com/ucloud/uiotedge-driver-sdk-c.git
+git clone https://github.com/ucloud/driver-sdk-c.git
 ```
 
 1. 编写`main.c`文件

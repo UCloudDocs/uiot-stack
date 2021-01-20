@@ -1,6 +1,6 @@
 # Python3 SDK使用
 
-本文介绍Python3 SDK的使用（模拟继电器开关状态的变化上报），用户可以根据提供的API接口以及[子设备的协议](https://docs.ucloud.cn/uiot-edge/user_guide/subdevice_driver_access/subdev_access_protocol)编写子设备数据上行及下行逻辑。
+本文介绍Python3 SDK的使用（模拟继电器开关状态的变化上报），用户可以根据提供的API接口以及子设备的协议编写子设备数据上行及下行逻辑。
 
 ## 使用要求
 
