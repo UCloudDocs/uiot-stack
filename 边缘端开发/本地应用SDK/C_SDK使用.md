@@ -13,7 +13,7 @@
 
 **下载应用C SDK**
 ```
-git clone https://github.com/ucloud/application-sdk-c.git
+git clone https://github.com/ucloud/iotstack-application-sdk-c.git
 ```
 **编写main.c文件**
 
