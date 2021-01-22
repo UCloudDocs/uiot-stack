@@ -19,7 +19,7 @@ git clone https://github.com/ucloud/iotstack-driver-sdk-c.git
 
 1. 编写`main.c`文件
 
-本例给出子设备驱动实现基本功能，省略错误处理，详细用户可以参考`./samples/uiot_edge_test.c`。
+本例给出子设备驱动实现基本功能，省略错误处理，详细用户可以参考`./samples/iotstack_driver_test.c`。
 
 子设备驱动的基本功能，包括4部分：
 
@@ -31,13 +31,16 @@ git clone https://github.com/ucloud/iotstack-driver-sdk-c.git
 
 ```c
 /* 注：本部分代码，只做核心代码展示，省略错误处理、内存释放等代码，
-   用户使用，请参考文件 ./samples/uiot_edge_test.c */
+   用户使用，请参考文件 ./samples/iotstack_driver_test.c */
 
 // 定义下行消息callback接口
 static void edge_normal_msg_handler_user(char *topic, char *payload)
 {
     log_write(LOG_INFO, "topic:%s payload:%s", topic, payload);
-    return;
+    /*
+    增加逻辑，处理云端到子设备驱动端的下行消息
+    */
+
 }
 
 int main(int argc, char **argv)
@@ -56,7 +59,7 @@ int main(int argc, char **argv)
     topic_str = (char *)malloc(512);
     time_stamp = (char *)malloc(512);
 
-    // 1. SDK初始化
+    // 1. SDK资源初始化
     status = edge_common_init();
 
     // 2.1 获取并解析驱动配置
@@ -126,14 +129,14 @@ int main(int argc, char **argv)
 // 更改路径到SDK根目录
 make
 // 生成可执行文件
-ls samples/uiot_edge_test
+ls samples/iotstack_driver_test
 ```
 
 1. 打包驱动
 
    ```bash
    #打包驱动SDK，如有动态链接库，需要一起打包
-   mv uiot_edge_test main
+   mv iotstack_driver_test main
    zip -r driver.zip main
    ```
 
