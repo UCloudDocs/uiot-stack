@@ -36,7 +36,7 @@ void recvmsg_handler(char *topic, char *payload)
     log_write(LOG_INFO, "receive topic:%s",topic);
     log_write(LOG_INFO, "receive payload:%s",payload);
     /*
-    	在此处编写下行消息处理逻辑
+    	在此处编写云端到应用的下行消息处理逻辑
     */
     return;
 }
@@ -125,7 +125,7 @@ zip -r driver.zip main
 
 
 ## 应用SDK API
-**应用sdk相关资源初始化**
+**应用sdk相关资源初始化，该函数必须要调用**
 ```
 app_status app_common_init(void)
 ```
