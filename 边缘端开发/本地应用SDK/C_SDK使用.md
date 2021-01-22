@@ -163,6 +163,7 @@ char *app_get_deviceSN(void)
 ```
 char *app_get_info(void)
 ```
+
 入参：无
 出参：返回应用信息的json字符串
 
@@ -173,8 +174,6 @@ char *app_get_info(void)
 ```
 app_status edge_status app_register_cb(msg_handler handle)
 ```
-
-
 
 
 入参：消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）`
