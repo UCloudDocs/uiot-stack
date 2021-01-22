@@ -110,6 +110,7 @@ make
 ```
 // 生成可执行文件
 **打包应用SDK，如有动态链接库，需要一起打包**
+
 ```
 mv samples main
 zip -r driver.zip main
@@ -126,6 +127,7 @@ zip -r driver.zip main
 
 ## 应用SDK API
 **应用sdk相关资源初始化，该函数必须要调用**
+
 ```
 app_status app_common_init(void)
 ```
@@ -133,6 +135,7 @@ app_status app_common_init(void)
 出参：执行结果，成功返回APP_OK
 
 **获取应用名称**
+
 ```
 char *app_get_name(void)
 ```
@@ -140,6 +143,7 @@ char *app_get_name(void)
 出参：应用名称的字符串
 
 **获取产品SN号（网关）**
+
 ```
 char *app_get_productSN(void)
 ```
@@ -147,6 +151,7 @@ char *app_get_productSN(void)
 出参：返回产品SN的字符串
 
 **获取设备SN号（网关）**
+
 ```
 char *app_get_deviceSN(void)
 ```
@@ -154,6 +159,7 @@ char *app_get_deviceSN(void)
 出参：返回设备SN号的字符串
 
 **获取应用信息**
+
 ```
 char *app_get_info(void)
 ```
@@ -161,6 +167,7 @@ char *app_get_info(void)
 出参：返回应用信息的json字符串
 
 **注册云平台到应用的下行消息处理回调函数**
+
 ```
 app_status edge_status app_register_cb(msg_handler handle)
 ```
