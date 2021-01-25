@@ -88,10 +88,10 @@
 		* [基于MQTT-TCP协议建立连接](/uiot-stack/直连设备开发指南/设备连接/基于MQTT-TCP协议建立连接)
 		* [获取设备在线状态](/uiot-stack/直连设备开发指南/设备连接/获取设备在线状态)	
 	* C SDK使用参考
-		* [C SDK使用](/uiot-stack/直连设备开发指南/C_SDK使用参考/C_SDK使用)
-		* [HAL接口详细说明](/uiot-stack/直连设备开发指南/C_SDK使用参考/HAL接口详细说明)
-		* [MQTT与设备认证开发](/uiot-stack/直连设备开发指南/C_SDK使用参考/MQTT与设备认证开发)
-		* [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C_SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
+		* [C SDK使用](/uiot-stack/直连设备开发指南/C%20SDK使用参考/C%20SDK使用)
+		* [HAL接口详细说明](/uiot-stack/直连设备开发指南/C%20SDK使用参考/HAL接口详细说明)
+		* [MQTT与设备认证开发](/uiot-stack/直连设备开发指南/C%20SDK使用参考/MQTT与设备认证开发)
+		* [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C%20SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
 
 
 
