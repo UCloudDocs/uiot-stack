@@ -104,11 +104,13 @@ end:
 ```
 
 ### 编译
-// 更改路径到SDK根目录
+
 ```
+更改路径到SDK根目录
 make
+生成可执行文件
 ```
-// 生成可执行文件
+
 **打包应用SDK，如有动态链接库，需要一起打包**
 
 ```
@@ -163,13 +165,21 @@ char *app_get_deviceSN(void)
 ```
 char *app_get_info(void)
 ```
+
 入参：无
 出参：返回应用信息的json字符串
 
 **注册云平台到应用的下行消息处理回调函数**
 
+#### 注册云平台到应用的下行消息处理回调函数
+
 ```
 app_status edge_status app_register_cb(msg_handler handle)
+
 ```
-入参：消息处理函数指针（void (*msg_handler)(char *topic, char *payload)）
+
+入参：消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）`
+
+
+
 出参：执行结果，成功返回APP_OK
