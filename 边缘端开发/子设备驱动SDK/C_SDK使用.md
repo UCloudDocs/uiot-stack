@@ -455,7 +455,7 @@ char *edge_get_topo(uint32_t time_out_ms)
           "ProductSN": "product1234",
           "DeviceSN": "device1234"
       }]
-  }CopyErrorSuccess
+  }
   ```
 
 ### edge_add_topo

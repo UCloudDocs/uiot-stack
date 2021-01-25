@@ -172,7 +172,6 @@ char *app_get_info(void)
 
 **注册云平台到应用的下行消息处理回调函数**
 
-#### 注册云平台到应用的下行消息处理回调函数
 
 ```
 app_status edge_status app_register_cb(msg_handler handle)
