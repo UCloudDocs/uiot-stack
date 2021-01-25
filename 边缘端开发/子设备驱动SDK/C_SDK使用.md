@@ -496,26 +496,6 @@ edge_status edge_delete_topo(subdev_client *pst_subdev_client, uint32_t time_out
   - 成功 - 返回EDGE_OK
   - 失败 - 返回类型参考：edge_status枚举
 
-### edge_set_log
-
-```c
-edge_status edge_set_log(log_level level, uint32_t file_size_mb, uint32_t file_number)
-```
-
-设置日志记录等级，日志文件大小和文件个数（一天一个日志文件）。
-
-- 输入参数
-
-| Parameter name | Type      | Description                                         |
-| -------------- | --------- | --------------------------------------------------- |
-| level          | log_level | 日志等级分为：DEBUG、INFO、WARNING、ERROR、CRITICAL |
-| file_size_mb   | uint32_t  | 单个日志文件大小                                    |
-| file_number    | uint32_t  | 日志文件个数                                        |
-
-- 返回值
-  - 成功 - 返回EDGE_OK
-  - 失败 - 返回类型参考：edge_status枚举
-
 ### log_write
 
 ```c
