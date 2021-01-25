@@ -86,7 +86,6 @@
 		* [动态注册](/uiot-stack/直连设备开发指南/设备注册/动态注册)	
 	* 设备连接
 		* [基于MQTT-TCP协议建立连接](/uiot-stack/直连设备开发指南/设备连接/基于MQTT-TCP协议建立连接)
-		* [基于MQTT-WebSocket协议建立连接](/uiot-stack/直连设备开发指南/设备连接/基于MQTT-WebSocket协议建立连接)	
 		* [获取设备在线状态](/uiot-stack/直连设备开发指南/设备连接/获取设备在线状态)	
 	* C-SDK使用参考
 		* [C-SDK快速入门](/uiot-stack/直连设备开发指南/C-SDK使用参考/C-SDK快速入门)
