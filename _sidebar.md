@@ -71,10 +71,10 @@
 * 边缘端开发
 	* 子设备驱动SDK
 		* [子设备驱动SDK概述](/uiot-stack/边缘端开发/子设备驱动SDK/子设备驱动SDK概述)
-		* [Python3_SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/Python3_SDK使用)
-		* [C_SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/C_SDK使用)
+		* [Python3 SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/Python3_SDK使用)
+		* [C SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/C_SDK使用)
 	* 本地应用SDK
-		* [C_SDK使用](/uiot-stack/边缘端开发/本地应用SDK/C_SDK使用)
+		* [C SDK使用](/uiot-stack/边缘端开发/本地应用SDK/C_SDK使用)
 	* 官方驱动
 		* [官方Modbus驱动（Python）](/uiot-stack/边缘端开发/官方驱动/官方Modbus驱动（Python）)
 		* [官方Modbus驱动（C）](/uiot-stack/边缘端开发/官方驱动/官方Modbus驱动（C）)
@@ -87,11 +87,11 @@
 	* 设备连接
 		* [基于MQTT-TCP协议建立连接](/uiot-stack/直连设备开发指南/设备连接/基于MQTT-TCP协议建立连接)
 		* [获取设备在线状态](/uiot-stack/直连设备开发指南/设备连接/获取设备在线状态)	
-	* C-SDK使用参考
-		* [C-SDK快速入门](/uiot-stack/直连设备开发指南/C-SDK使用参考/C-SDK快速入门)
-		* [HAL接口详细说明](/uiot-stack/直连设备开发指南/C-SDK使用参考/HAL接口详细说明)
-		* [MQTT与设备认证开发](/uiot-stack/直连设备开发指南/C-SDK使用参考/MQTT与设备认证开发)
-		* [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C-SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
+	* C SDK使用参考
+		* [C SDK使用](/uiot-stack/直连设备开发指南/C_SDK使用参考/C_SDK使用)
+		* [HAL接口详细说明](/uiot-stack/直连设备开发指南/C_SDK使用参考/HAL接口详细说明)
+		* [MQTT与设备认证开发](/uiot-stack/直连设备开发指南/C_SDK使用参考/MQTT与设备认证开发)
+		* [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C_SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
 
 
 
