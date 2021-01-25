@@ -143,6 +143,8 @@ zip -r driver.zip main
 app_status app_common_init(void)
 ```
 入参：无
+
+
 出参：执行结果，成功返回APP_OK
 
 **获取应用名称**
@@ -151,6 +153,8 @@ app_status app_common_init(void)
 char *app_get_name(void)
 ```
 入参：无
+
+
 出参：应用名称的字符串
 
 **获取产品SN号（网关）**
@@ -159,6 +163,8 @@ char *app_get_name(void)
 char *app_get_productSN(void)
 ```
 入参：无
+
+
 出参：返回产品SN的字符串
 
 **获取设备SN号（网关）**
@@ -167,6 +173,8 @@ char *app_get_productSN(void)
 char *app_get_deviceSN(void)
 ```
 入参：无
+
+
 出参：返回设备SN号的字符串
 
 **获取应用信息**
@@ -176,6 +184,8 @@ char *app_get_info(void)
 ```
 
 入参：无
+
+
 出参：返回应用信息的json字符串
 
 **注册云平台到应用的下行消息处理回调函数**
@@ -187,7 +197,6 @@ app_status edge_status app_register_cb(msg_handler handle)
 ```
 
 入参：消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）`
-
 
 
 出参：执行结果，成功返回APP_OK
