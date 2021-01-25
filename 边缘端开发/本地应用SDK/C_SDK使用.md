@@ -25,6 +25,7 @@ git clone https://github.com/ucloud/iotstack-application-sdk-c.git
 * 解析驱动配置信息，及应用配置信息
 * 创建应用，并配置下行消息处理回调函数
 * 发布消息
+
 ```c
 /* 注：本部分代码，只做核心代码展示，省略错误处理、内存释放等代码，
    用户使用，请参考文件 samples/samples.c */
@@ -105,7 +106,7 @@ end:
 
 ### 编译
 
-```
+```bash
 更改路径到SDK根目录
 make
 生成可执行文件
