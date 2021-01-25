@@ -9,7 +9,7 @@
 * 编译如果依赖动态链接库，需要一并打包到zip包，并确保main能正确找到该*.so路径
 
 本文档所有路径基于git仓库根目录
-## 驱动SDK使用流程
+## 应用SDK使用流程
 
 **下载应用C SDK**
 ```
@@ -22,7 +22,7 @@ git clone https://github.com/ucloud/iotstack-application-sdk-c.git
 应用的基本功能，包括4部分：
 
 * 初始化应用
-* 解析驱动配置信息，及应用配置信息
+* 解析应用配置信息，及应用配置信息
 * 创建应用，并配置下行消息处理回调函数
 * 发布消息
 
@@ -119,9 +119,17 @@ mv samples main
 zip -r driver.zip main
 ```
 
-**上传应用zip压缩包到驱动管理**
+**上传应用zip压缩包到应用管理**
 
-**分配应用到网关设备**
+**填写应用配置json**
+```
+本例为：
+{
+    "topic":"/%s/%s/upload"
+}
+```
+
+**部署应用到网关设备**
 
 **进行测试**
 
@@ -135,6 +143,8 @@ zip -r driver.zip main
 app_status app_common_init(void)
 ```
 入参：无
+
+
 出参：执行结果，成功返回APP_OK
 
 **获取应用名称**
@@ -143,6 +153,8 @@ app_status app_common_init(void)
 char *app_get_name(void)
 ```
 入参：无
+
+
 出参：应用名称的字符串
 
 **获取产品SN号（网关）**
@@ -151,6 +163,8 @@ char *app_get_name(void)
 char *app_get_productSN(void)
 ```
 入参：无
+
+
 出参：返回产品SN的字符串
 
 **获取设备SN号（网关）**
@@ -159,6 +173,8 @@ char *app_get_productSN(void)
 char *app_get_deviceSN(void)
 ```
 入参：无
+
+
 出参：返回设备SN号的字符串
 
 **获取应用信息**
@@ -168,6 +184,8 @@ char *app_get_info(void)
 ```
 
 入参：无
+
+
 出参：返回应用信息的json字符串
 
 **注册云平台到应用的下行消息处理回调函数**
@@ -179,7 +197,6 @@ app_status edge_status app_register_cb(msg_handler handle)
 ```
 
 入参：消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）`
-
 
 
 出参：执行结果，成功返回APP_OK
