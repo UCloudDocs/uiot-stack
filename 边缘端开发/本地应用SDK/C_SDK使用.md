@@ -42,6 +42,20 @@ void recvmsg_handler(char *topic, char *payload)
     return;
 }
 
+//rrpc下行消息处理接口
+void app_rrpc_msg_handler(char *topic, char *payload)
+{
+    log_write(LOG_INFO, "rrpc topic:%s",topic);
+    log_write(LOG_INFO, "rrpc payload:%s",payload);
+    /*
+    增加逻辑，处理云端到子设备驱动端的rrpc消息
+    */
+	
+    //将处理完成的payload填入edge_rrpc_response的第二个入参，作为rrpc的执行结果返回云端
+    app_rrpc_response(topic, "rrpc response sample!");
+    return;
+}
+
 int main(int argc, char **argv)
 {
     app_status status = APP_OK;    
@@ -192,11 +206,12 @@ char *app_get_info(void)
 
 
 ```
-app_status edge_status app_register_cb(msg_handler handle)
+app_status edge_status app_register_cb(msg_handler handle, msg_handler rrpc_handler)
 
 ```
 
 入参：消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）`
+      rrpc消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）`                   
 
 
 出参：执行结果，成功返回APP_OK

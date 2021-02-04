@@ -43,6 +43,19 @@ static void edge_normal_msg_handler_user(char *topic, char *payload)
 
 }
 
+//rrpc消息处理接口
+static void edge_rrpc_msg_handler_user(char *topic, char *payload)
+{
+    log_write(LOG_INFO, "rrpc topic:%s payload:%s", topic, payload);
+    /*
+    增加逻辑，处理云端到子设备驱动端的rrpc消息
+    */
+	
+    //将处理完成的payload填入edge_rrpc_response的第二个入参，作为rrpc的执行结果返回云端
+    edge_rrpc_response(topic, "rrpc response message!");
+    return;
+}
+
 int main(int argc, char **argv)
 {
     edge_status         status     = EDGE_OK;
@@ -244,7 +257,7 @@ char * edge_get_device_sn(void)
 ### edge_subdev_construct
 
 ```c
-subdev_client * edge_subdev_construct(const char *product_sn, const char *device_sn, edge_normal_msg_handler normal_msg_handle)
+subdev_client * edge_subdev_construct(const char *product_sn, const char *device_sn, edge_normal_msg_handler normal_msg_handle, edge_rrpc_msg_handler rrpc_msg_handle)
 ```
 
 创建一个子设备句柄。
@@ -256,7 +269,7 @@ subdev_client * edge_subdev_construct(const char *product_sn, const char *device
 | product_sn        | const char *            | 子设备产品序列号           |
 | device_sn         | const char *            | 子设备设备序列号           |
 | normal_msg_handle | edge_normal_msg_handler | 子设备的接收消息的回调函数 |
-
+| rrpc_msg_handle   | edge_rrpc_msg_handler   | 子设备接收的rrpc消息的回调函数 |
 - 返回值
   - 成功 - 返回subdev_client指针
   - 失败 - 返回NULL

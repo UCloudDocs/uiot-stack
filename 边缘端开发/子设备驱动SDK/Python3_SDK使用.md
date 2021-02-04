@@ -74,9 +74,15 @@ if __name__ == "__main__":
         def callback(topic: str, payload: b''):
             log.info("recv message from {} : {}".format(topic, str(payload)))
 
+		# 定义驱动收到下行RRPC消息后的处理逻辑
+        def rrpc_callback(topic: str, payload: b''):
+            return b'{"a":1}'
+
         subDevice = SubDevice(product_sn=productSN,
                               device_sn=deviceSN, on_msg_callback=callback)
 
+		# 设置驱动得rrpc消息回调函数
+        subDevice.set_rrpc_callback(rrpc_callback)
         # 4. 子设备上线
         subDevice.login()
 
@@ -284,6 +290,32 @@ zip -r driver.zip
 | msg_callback   | Function | 子设备的接收消息的回调函数 |
 
 - msg_callback: callback(topic:str, msg:b'')
+  - 回调入参
+
+| Parameter name | Type    | Description         |
+| -------------- | ------- | ------------------- |
+| topic          | String  | 接收到消息的Topic   |
+| msg            | b:bytes | 接收到消息的Payload |
+
+- 返回Exception
+
+  异常示例：
+
+  ```
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
+  ```
+
+- **SubDevice.set_rrpc_callback(rrpc_callback) 方法**
+
+  设置收到消息回调函数
+
+  - 输入参数
+
+| Parameter name | Type     | Description                |
+| -------------- | -------- | -------------------------- |
+| rrpc_callback   | Function | 接收rrpc消息的回调函数 |
+
+- rrpc_callback: callback(topic:str, msg:b'')
   - 回调入参
 
 | Parameter name | Type    | Description         |
