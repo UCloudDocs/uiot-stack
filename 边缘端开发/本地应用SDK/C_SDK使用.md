@@ -210,7 +210,7 @@ app_status edge_status app_register_cb(msg_handler handle, msg_handler rrpc_hand
 
 ```
 
-入参：消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）`
+入参：消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）` </br>
       rrpc消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）`                   
 
 
