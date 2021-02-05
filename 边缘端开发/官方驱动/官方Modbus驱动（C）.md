@@ -189,7 +189,7 @@ C语言版本具有python版的绝大部分功能（除Modbus Binary Formate）�
       - swap32：选填，true/false，修改大小端，当寄存器count=2时，是否交换两个寄存器的数据后再换算
   - write：选填，定义写入寄存器值和下行json数据包对应的关系，该项为数组
     - device.coil1,device.coil2,device.coil1_coil2为jsonpath，用户根据自己需要组包的json的格式自定义
-    - action：必填，写功能码，可选为：**"05H","06H","0FH","10H"**
+    - action：必填，写功能码，可选为：**"05H"**,**"06H"**,**"0FH"**,**"10H"**
     - address：必填，写寄存器地址
   - timestamp: 选填（默认值为false）
     - 布尔型：true/false，上报数据是否带时间戳，时间戳为Unix时间戳（秒）
