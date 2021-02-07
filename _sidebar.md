@@ -1,5 +1,6 @@
 <div class="sidebar_title icon__uiotstack"> UIoT Stack</div>      
 
+* [产品简介](/uiot-stack/产品简介)
 * 控制台操作指南
   * 账号及项目管理
   	* [账号登录](/uiot-stack/控制台操作指南/账号及项目管理/账号登录)
@@ -56,7 +57,6 @@
     	* [操作指南](/uiot-stack/控制台操作指南/网关管理/本地控制台操作指南/操作指南)
   * [监控视图](/uiot-stack/控制台操作指南/监控视图)
   * [日志管理](/uiot-stack/控制台操作指南/日志管理)
-  
 * IoT平台开发指南
 	* [API调用规范及示例](/uiot-stack/IoT平台开发指南/API调用规范及示例)
 	* [API列表](/uiot-stack/IoT平台开发指南/API列表)
