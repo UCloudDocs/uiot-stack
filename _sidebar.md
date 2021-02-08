@@ -1,5 +1,6 @@
 <div class="sidebar_title icon__uiotstack"> UIoT Stack</div>      
 
+* [产品简介](/uiot-stack/产品简介)
 * 控制台操作指南
   * 账号及项目管理
   	* [账号登录](/uiot-stack/控制台操作指南/账号及项目管理/账号登录)
@@ -18,7 +19,7 @@
   	* [数据解析](/uiot-stack/控制台操作指南/产品管理/数据解析)
   	* [其他功能](/uiot-stack/控制台操作指南/产品管理/其他功能)
   * 规则引擎
-  	* [规则引擎概述](/uiot-stack/控制台操作指南/规则引擎/规则引擎概述)
+  	* [规则引擎概述](/uiot-stack/控制台操作指南/规则引擎/规则引擎概览)
   	* [数据流转管理](/uiot-stack/控制台操作指南/规则引擎/数据流转管理)
   	* [SQL表达式特性](/uiot-stack/控制台操作指南/规则引擎/SQL表达式特性)
   	* 添加动作
@@ -31,7 +32,9 @@
   		* [发布到Topic](/uiot-stack/控制台操作指南/规则引擎/添加动作/发布到Topic)
   * 网关管理
     * [网关功能概述](/uiot-stack/控制台操作指南/网关管理/网关功能概述)
-    * [软件安装](/uiot-stack/控制台操作指南/网关管理软件安装)
+    * 软件安装
+      * [开机自启动设置](/uiot-stack/控制台操作指南/网关管理/软件安装/开机自启动设置)
+      * [软件安装](/uiot-stack/控制台操作指南/网关管理/软件安装/软件安装)
     * [子设备管理](/uiot-stack/控制台操作指南/网关管理/子设备管理)
     * 设备驱动
     	* [设备驱动概览](/uiot-stack/控制台操作指南/网关管理/设备驱动/设备驱动概览)
@@ -48,10 +51,14 @@
     * 消息路由
     	* [概览](/uiot-stack/控制台操作指南/网关管理/消息路由/概览)
     	* [消息路由配置详解](/uiot-stack/控制台操作指南/网关管理/消息路由/消息路由配置详解)
-    * [远程访问](/uiot-stack/控制台操作指南/网关管理/远程访问)
+    * [网关部署](/uiot-stack/控制台操作指南/网关管理/网关部署)
+		* [远程访问](/uiot-stack/控制台操作指南/网关管理/远程访问)
+		* [网关日志](/uiot-stack/控制台操作指南/网关管理/网关日志)
+    * 本地控制台操作指南
+    	* [概览](/uiot-stack/控制台操作指南/网关管理/本地控制台操作指南/概览)
+    	* [操作指南](/uiot-stack/控制台操作指南/网关管理/本地控制台操作指南/操作指南)
   * [监控视图](/uiot-stack/控制台操作指南/监控视图)
   * [日志管理](/uiot-stack/控制台操作指南/日志管理)
-
 * IoT平台开发指南
 	* [API调用规范及示例](/uiot-stack/IoT平台开发指南/API调用规范及示例)
 	* [API列表](/uiot-stack/IoT平台开发指南/API列表)
@@ -71,14 +78,14 @@
 * 边缘端开发
 	* 子设备驱动SDK
 		* [子设备驱动SDK概述](/uiot-stack/边缘端开发/子设备驱动SDK/子设备驱动SDK概述)
-		* [Python3_SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/Python3_SDK使用)
-		* [C_SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/C_SDK使用)
+		* [Python3 SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/Python3_SDK使用)
+		* [C SDK使用](/uiot-stack/边缘端开发/子设备驱动SDK/C_SDK使用)
 	* 本地应用SDK
-		* [C_SDK使用](/uiot-stack/边缘端开发/本地应用SDK/C_SDK使用)
+		* [C SDK使用](/uiot-stack/边缘端开发/本地应用SDK/C_SDK使用)
 	* 官方驱动
-		* [官方Modbus驱动（Python）](/uiot-stack/边缘端开发/官方驱动/官方Modbus驱动（Python）)
 		* [官方Modbus驱动（C）](/uiot-stack/边缘端开发/官方驱动/官方Modbus驱动（C）)
 		* [官方DLT645驱动（C）](/uiot-stack/边缘端开发/官方驱动/官方DLT645驱动（C）)
+		* [RRPC使用示例](/uiot-stack/边缘端开发/官方驱动/RRPC使用示例)
 * 直连设备开发指南
 	* 设备注册
 		* [什么是设备注册](/uiot-stack/直连设备开发指南/设备注册/什么是设备注册)
@@ -86,13 +93,12 @@
 		* [动态注册](/uiot-stack/直连设备开发指南/设备注册/动态注册)	
 	* 设备连接
 		* [基于MQTT-TCP协议建立连接](/uiot-stack/直连设备开发指南/设备连接/基于MQTT-TCP协议建立连接)
-		* [基于MQTT-WebSocket协议建立连接](/uiot-stack/直连设备开发指南/设备连接/基于MQTT-WebSocket协议建立连接)	
 		* [获取设备在线状态](/uiot-stack/直连设备开发指南/设备连接/获取设备在线状态)	
-	* C-SDK使用参考
-		* [C-SDK快速入门](/uiot-stack/直连设备开发指南/C-SDK使用参考/C-SDK快速入门)
-		* [HAL接口详细说明](/uiot-stack/直连设备开发指南/C-SDK使用参考/HAL接口详细说明)
-		* [MQTT与设备认证开发](/uiot-stack/直连设备开发指南/C-SDK使用参考/MQTT与设备认证开发)
-		* [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C-SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
+	* C SDK使用参考
+		* [C SDK使用](/uiot-stack/直连设备开发指南/C_SDK使用参考/C_SDK使用)
+		* [HAL接口详细说明](/uiot-stack/直连设备开发指南/C_SDK使用参考/HAL接口详细说明)
+		* [MQTT与设备认证开发](/uiot-stack/直连设备开发指南/C_SDK使用参考/MQTT与设备认证开发)
+		* [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C_SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
 
 
 

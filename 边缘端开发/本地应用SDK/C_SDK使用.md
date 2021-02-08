@@ -1,4 +1,4 @@
-# 本地应用C-SDK使用
+# C SDK使用
 
 本文介绍应用SDK的使用，用户可以根据提供的API接口编写数据上行及下行逻辑。
 
@@ -9,73 +9,84 @@
 * 编译如果依赖动态链接库，需要一并打包到zip包，并确保main能正确找到该*.so路径
 
 本文档所有路径基于git仓库根目录
+## 应用SDK使用流程
 
-
-
-## 驱动SDK使用流程
-
-### 下载应用C SDK
-
+**下载应用C SDK**
 ```
-git clone https://git.ucloudadmin.com/uiotstack/edge/application-sdk-c.git
+git clone https://github.com/ucloud/iotstack-application-sdk-c.git
 ```
-### 编写main.c文件
+**编写main.c文件**
 
-本例给出实现基本功能，省略错误处理，详细用户可以参考./samples/samples.c。
+本例给出实现基本功能，省略错误处理，详细用户可以参考samples/samples.c。
 
 应用的基本功能，包括4部分：
 
 * 初始化应用
-* 解析驱动配置信息，及应用配置信息
+* 解析应用配置信息，及应用配置信息
 * 创建应用，并配置下行消息处理回调函数
 * 发布消息
-```
+
+```c
 /* 注：本部分代码，只做核心代码展示，省略错误处理、内存释放等代码，
-   用户使用，请参考文件 ./samples/samples.c */
+   用户使用，请参考文件 samples/samples.c */
 
 // 定义下行消息callback接口
 void recvmsg_handler(char *topic, char *payload)
 {
-	//打印接收到的下次消息内容
+    //打印接收到的下次消息内容
     log_write(LOG_INFO, "receive topic:%s",topic);
     log_write(LOG_INFO, "receive payload:%s",payload);
-	/*
-    在此处编写下行消息处理逻辑
-	*/
+    /*
+    	在此处编写云端到应用的下行消息处理逻辑
+    */
+    return;
+}
+
+//rrpc下行消息处理接口
+void app_rrpc_msg_handler(char *topic, char *payload)
+{
+    log_write(LOG_INFO, "rrpc topic:%s",topic);
+    log_write(LOG_INFO, "rrpc payload:%s",payload);
+    /*
+    增加逻辑，处理云端到子设备驱动端的rrpc消息
+    */
+	
+    //将处理完成的payload填入edge_rrpc_response的第二个入参，作为rrpc的执行结果返回云端
+    app_rrpc_response(topic, "rrpc response sample!");
     return;
 }
 
 int main(int argc, char **argv)
 {
-    edge_status status = EDGE_OK;    
+    app_status status = APP_OK;    
     char topic_str[100] = {0};    
     struct timeval stamp;
     char time_stamp[100] = {0};
     cJSON *app_info = NULL;
     //初始化，获取产品、设备SN号信息
-    status = edge_common_init();
-    if(EDGE_OK != status)
+    status = app_common_init();
+    if(APP_OK != status)
     {
-        log_write(LOG_ERROR, "edge_Common_Init fail");
+        log_write(LOG_ERROR, "app_common_init fail");
         goto end;
     }
 
-    log_write(LOG_INFO, "productSN:%s, deviceSN:%s",edge_get_productSN(),edge_get_deviceSN());
-    log_write(LOG_INFO, "app info:%s",edge_get_application_info());
+    log_write(LOG_INFO, "productSN:%s, deviceSN:%s",app_get_productSN(),app_get_deviceSN());
+    log_write(LOG_INFO, "app info:%s",app_get_info());
 
     //注册回调函数，回调函数处理接收到的下行消息
-    status = edge_register_cb(recvmsg_handler);
-    if(EDGE_OK != status)
+    status = app_register_cb(recvmsg_handler);
+    if(APP_OK != status)
     {
-        log_write(LOG_ERROR, "edge_register_cb fail");
+        log_write(LOG_ERROR, "app_register_cb fail");
         goto end;
     }
 
     //获取应用配置信息，此处解析出上报消息的topic名称
-    app_info = cJSON_Parse(edge_get_application_info());
+    app_info = cJSON_Parse(app_get_info());
     if (!app_info) 
     {
-        log_write(LOG_ERROR, "parse application info fail");
+        log_write(LOG_ERROR, "parse app info fail");
         goto end;
     }
     /*
@@ -83,20 +94,20 @@ int main(int argc, char **argv)
     */
     cJSON *topic_format = cJSON_GetObjectItem(app_info, "topic");
 
-    snprintf(topic_str, 100, topic_format->valuestring, edge_get_productSN(), edge_get_deviceSN());
+    snprintf(topic_str, 100, topic_format->valuestring, app_get_productSN(), app_get_deviceSN());
     while(1)
     {    
-		//每隔5秒上报当前时间
+        //每隔5秒上报当前时间
         sleep(5);
         gettimeofday(&stamp, NULL);
         memset(time_stamp, 0, 100);
         snprintf(time_stamp, 100, "{\"timestamp\": \"%ld\"}", stamp.tv_sec);
         log_write(LOG_INFO, "send message[%s]", time_stamp);
         
-        status = edge_publish(topic_str, time_stamp);
-        if(EDGE_OK != status)
+        status = app_publish(topic_str, time_stamp);
+        if(APP_OK!= status)
         {
-            log_write(LOG_ERROR, "edge_publish fail");
+            log_write(LOG_ERROR, "app_publish fail");
             goto end;
         }
     }
@@ -108,84 +119,99 @@ end:
 ```
 
 ### 编译
-// 更改路径到SDK根目录
-```
+
+```bash
+更改路径到SDK根目录
 make
+生成可执行文件
 ```
-// 生成可执行文件
-### 打包驱动SDK，如有动态链接库，需要一起打包
+
+**打包应用SDK，如有动态链接库，需要一起打包**
+
 ```
 mv samples main
 zip -r driver.zip main
 ```
 
-### 上传驱动zip压缩包到驱动管理
+**上传应用zip压缩包到应用管理**
 
-### 分配驱动到网关设备
+**填写应用配置json**
+```
+本例为：
+{
+    "topic":"/%s/%s/upload"
+}
+```
 
-### 进行测试
+**部署应用到网关设备**
 
-### 配置路由后，通过日志模块查看上下行消息内容。
+**进行测试**
+
+**配置路由后，通过日志模块查看上下行消息内容**
 
 
 ## 应用SDK API
-### edge资源初始化
-```
-edge_status edge_common_init(void)
-```
-入参：无
-出参：执行结果，成功返回EDGE_OK
+**应用sdk相关资源初始化，该函数必须要调用**
 
-### 获取应用名称
 ```
-char *edge_get_application_name(void)
+app_status app_common_init(void)
 ```
 入参：无
+
+
+出参：执行结果，成功返回APP_OK
+
+**获取应用名称**
+
+```
+char *app_get_name(void)
+```
+入参：无
+
+
 出参：应用名称的字符串
 
-### 获取产品SN号（网关）
-```
-char *edge_get_productSN(void)
-```
-入参：无
-出参：产品SN的字符串
+**获取产品SN号（网关）**
 
-### 获取设备SN号（网关）
 ```
-char *edge_get_deviceSN(void)
+char *app_get_productSN(void)
 ```
 入参：无
-出参：设备SN号
 
-### 获取应用信息
+
+出参：返回产品SN的字符串
+
+**获取设备SN号（网关）**
+
 ```
-char *edge_get_application_info(void)
+char *app_get_deviceSN(void)
 ```
 入参：无
-出参：应用信息
 
-### 注册消息处理回调函数
+
+出参：返回设备SN号的字符串
+
+**获取应用信息**
+
 ```
-edge_status edge_status edge_register_cb(msg_handler handle)
+char *app_get_info(void)
 ```
-入参：消息处理函数指针（void (*msg_handler)(char *topic, char *payload)）
-出参：执行结果，成功返回EDGE_OK
+
+入参：无
 
 
+出参：返回应用信息的json字符串
+
+**注册云平台到应用的下行消息处理回调函数**
 
 
+```
+app_status edge_status app_register_cb(msg_handler handle, msg_handler rrpc_handler)
+
+```
+
+入参：消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）` </br>
+      rrpc消息处理函数指针 `（void (*msg_handler)(char *topic, char *payload)）`                   
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+出参：执行结果，成功返回APP_OK
