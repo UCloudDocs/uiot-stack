@@ -8,20 +8,20 @@
 
 ## 驱动SDK使用流程
 
-1. 下载Python3 SDK
+**下载Python3 SDK**
 
 ```bash
  pip3 install iotedge_driver_link_sdk
 ```
 
-1. 创建`index.py`文件
+**创建`index.py`文件**
 
-   下面的代码给出了一个子设备驱动需要完成的最基本功能，包括4部分：
+下面的代码给出了一个子设备驱动需要完成的最基本功能，包括4部分：
 
-   - 解析驱动及子设备配置信息，获取配置及子设备列表
-   - 创建子设备对象，并配置下行消息回调
-   - 子设备上线`login`
-   - 发布消息
+- 解析驱动及子设备配置信息，获取配置及子设备列表
+- 创建子设备对象，并配置下行消息回调
+- 子设备上线`login`
+- 发布消息
 
 ```python
 from iotedgedriverlinksdk.client import SubDevice, Config
@@ -74,9 +74,15 @@ if __name__ == "__main__":
         def callback(topic: str, payload: b''):
             log.info("recv message from {} : {}".format(topic, str(payload)))
 
+		# 定义驱动收到下行RRPC消息后的处理逻辑
+        def rrpc_callback(topic: str, payload: b''):
+            return b'{"a":1}'
+
         subDevice = SubDevice(product_sn=productSN,
                               device_sn=deviceSN, on_msg_callback=callback)
 
+		# 设置驱动得rrpc消息回调函数
+        subDevice.set_rrpc_callback(rrpc_callback)
         # 4. 子设备上线
         subDevice.login()
 
@@ -119,7 +125,7 @@ if __name__ == "__main__":
         log.error('Exception error: {}'.format(str(e)))
 ```
 
-1. 打包驱动
+**打包驱动**
 
 ```bash
 #打包驱动SDK，"-t ."，表示下载python包到当前目录，用于打包上传到驱动管理
@@ -130,13 +136,15 @@ zip -r driver.zip
 
 > 打包需要同时包含所有依赖。
 
-1. 上传驱动zip压缩包到驱动管理
+* 上传驱动zip压缩包到驱动管理
 
-2. 分配驱动到网关设备
+* 分配驱动到网关设备
 
-3. 进行测试
+* 进行测试
 
-   配置路由后，通过日志模块查看上下行消息内容。
+* 配置路由后，通过日志模块查看上下行消息内容
+
+  
 
 ## 驱动API介绍
 
@@ -146,14 +154,15 @@ zip -r driver.zip
 
 创建一个Config对象，用于获取驱动配置、子设备配置。
 
-- **Config.getDeviceInfos() 方法**
-- 返回值
+**Config.getDeviceInfos() 方法**
+
+返回值
 
 | Parameter name | Type | Description  |
 | -------------- | ---- | ------------ |
 | DeviceInfoList | List | 设备信息列表 |
 
-- DeviceInfo设备信息
+DeviceInfo设备信息
 
 | Parameter name | Type       | Description    |
 | -------------- | ---------- | -------------- |
@@ -163,22 +172,25 @@ zip -r driver.zip
 
 
 
-- **Config.getDriverInfo() 方法**
-- 返回值
+**Config.getDriverInfo() 方法**
+
+返回值
 
 | Parameter name | Type       | Description  |
 | -------------- | ---------- | ------------ |
 | DriverInfo     | Dictionary | 驱动配置信息 |
 
-- **Config. getGatewayProductSN()方法**
-- 返回值
+**Config. getGatewayProductSN()方法**
+
+返回值
 
 | Parameter name | Type   | Description         |
 | -------------- | ------ | ------------------- |
 | ProductSN      | String | 网关的ProductSN信息 |
 
-- **Config. getGatewayDeviceSN() 方法**
-- 返回值
+**Config. getGatewayDeviceSN() 方法**
+
+返回值
 
 | Parameter name | Type   | Description        |
 | -------------- | ------ | ------------------ |
@@ -188,7 +200,7 @@ zip -r driver.zip
 
 创建一个SubDevice对象，用于实现对子设备的操作，包括收发消息、设备上下线。
 
-- **SubDevice 构造函数入参**
+**SubDevice 构造函数入参**
 
 | Parameter name  | Type     | Description                |
 | --------------- | -------- | -------------------------- |
@@ -196,102 +208,103 @@ zip -r driver.zip
 | device_sn       | String   | 子设备设备序列号           |
 | on_msg_callback | Function | 子设备的接收消息的回调函数 |
 
-- msg_callback: callback(topic:str, msg:b'')
+	* on_msg_callback: callback(topic:str, msg:b'')
 
-  回调函数入参
+​	回调函数入参
 
 | Parameter name | Type    | Description         |
 | -------------- | ------- | ------------------- |
 | topic          | String  | 接收到消息的Topic   |
 | msg            | b:bytes | 接收到消息的Payload |
 
-- **SubDevice.set_product_sn(product_sn) 方法**
+**SubDevice.set_product_sn(product_sn) 方法**
 
-  设置成员变量产品序列号
+设置成员变量产品序列号
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type   | Description      |
 | -------------- | ------ | ---------------- |
 | product_sn     | String | 子设备产品序列号 |
 
-- **SubDevice.set_device_sn(device_sn) 方法**
+**SubDevice.set_device_sn(device_sn) 方法**
 
-  设置成员变量设备序列号
+设置成员变量设备序列号
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type   | Description      |
 | -------------- | ------ | ---------------- |
 | device_sn      | String | 子设备设备序列号 |
 
-- **SubDevice.set_product_secret(product_secret) 方法**
+**SubDevice.set_product_secret(product_secret) 方法**
 
-  设置成员变量产品密钥
+设置成员变量产品密钥
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type   | Description    |
 | -------------- | ------ | -------------- |
 | product_secret | String | 子设备产品密钥 |
 
-- **SubDevice.login(sync=False, timeout=5) 方法**
+**SubDevice.login(sync=False, timeout=5) 方法**
 
-  子设备上线操作
+子设备上线操作
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type | Description                                                  |
 | -------------- | ---- | ------------------------------------------------------------ |
 | sync           | Bool | 是否异步登录： 同步(False)：登录等待云端确认成功reply 异步(True)：登录不关心是否云端接收成功 |
 | timeout        | Int  | 同步时使用，等待超时时间，单位秒                             |
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
   ```
   EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
-- **SubDevice.logout(sync=False, timeout=5) 方法**
+**SubDevice.logout(sync=False, timeout=5) 方法**
 
-  子设备下线操作
+子设备下线操作
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type | Description                                                  |
 | -------------- | ---- | ------------------------------------------------------------ |
 | sync           | Bool | 是否异步登出： 同步(False)：登出等待云端确认成功reply 异步(True)：登出不关心是否云端接收成功 |
 | timeout        | Int  | 同步时使用，等待超时时间，单位秒                             |
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+ 异常示例：
 
   ```
   EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
-- **SubDevice.set_msg_callback(msg_callback) 方法**
+**SubDevice.set_msg_callback(msg_callback) 方法**
 
-  设置收到消息回调函数
+设置收到消息回调函数
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type     | Description                |
 | -------------- | -------- | -------------------------- |
 | msg_callback   | Function | 子设备的接收消息的回调函数 |
 
-- msg_callback: callback(topic:str, msg:b'')
-  - 回调入参
+msg_callback: callback(topic:str, msg:b'')
+
+- 回调入参
 
 | Parameter name | Type    | Description         |
 | -------------- | ------- | ------------------- |
 | topic          | String  | 接收到消息的Topic   |
 | msg            | b:bytes | 接收到消息的Payload |
 
-- 返回Exception
+返回Exception
 
   异常示例：
 
@@ -299,50 +312,77 @@ zip -r driver.zip
   EdgeDriverLinkException:code=1000xx,msg=xxxx
   ```
 
-- **SubDevice.publish(topic, payload)) 方法**
+**SubDevice.set_rrpc_callback(rrpc_callback) 方法**
 
-  发送消息
+设置收到消息回调函数
 
-  - 输入参数
+输入参数
+
+| Parameter name | Type     | Description                |
+| -------------- | -------- | -------------------------- |
+| rrpc_callback   | Function | 接收rrpc消息的回调函数 |
+
+rrpc_callback: callback(topic:str, msg:b'')
+
+回调入参
+
+| Parameter name | Type    | Description         |
+| -------------- | ------- | ------------------- |
+| topic          | String  | 接收到消息的Topic   |
+| msg            | b:bytes | 接收到消息的Payload |
+
+返回Exception
+
+异常示例：
+
+  ```
+  EdgeDriverLinkException:code=1000xx,msg=xxxx
+  ```
+
+**SubDevice.publish(topic, payload)) 方法**
+
+发送消息
+
+输入参数
 
 | Parameter name | Type    | Description       |
 | -------------- | ------- | ----------------- |
 | topic          | String  | 发送消息的Topic   |
 | payload        | b:bytes | 发送消息的Payload |
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
-  ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxx
-  ```
+```
+EdgeDriverLinkException:code=1000xx,msg=xxxx
+```
 
-- **SubDevice.registerDevice(timeout) 方法**
+**SubDevice.registerDevice(timeout) 方法**
 
-  动态注册子设备，动态注册需要先设置成员变量`product_sn`, `device_sn`, `product_secret`。动态注册原理参考动态注册。
+动态注册子设备，动态注册需要先设置成员变量`product_sn`, `device_sn`, `product_secret`。动态注册原理参考动态注册。
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type | Description                       |
 | -------------- | ---- | --------------------------------- |
 | timeout        | int  | 等待注册成功reply超时时间，单位秒 |
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
-  ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxx
-  ```
+```
+EdgeDriverLinkException:code=1000xx,msg=xxxx
+```
 
 ### iotedgedriverlinksdk.edge包
 
-- **register_device(product_sn, device_sn, product_secret, timeout=5) 函数**
+**register_device(product_sn, device_sn, product_secret, timeout=5) 函数**
 
-  动态注册子设备，动态注册原理参考动态注册。
+动态注册子设备，动态注册原理参考动态注册。
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type   | Description                       |
 | -------------- | ------ | --------------------------------- |
@@ -351,32 +391,32 @@ zip -r driver.zip
 | product_secret | String | 子设备设备密钥                    |
 | timeout        | int    | 等待注册成功reply超时时间，单位秒 |
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
-  ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxx
-  ```
+```
+EdgeDriverLinkException:code=1000xx,msg=xxxx
+```
 
-- **set_on_topo_change_callback(callback) 函数**
+**set_on_topo_change_callback(callback) 函数**
 
-  设置子设备绑定关系发生改变后的回调函数。
+设置子设备绑定关系发生改变后的回调函数。
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type     | Description              |
 | -------------- | -------- | ------------------------ |
 | callback       | Function | 绑定关系发生改变回调函数 |
 
-- callback: callback(msg:b'')
-  - 回调入参
+callback: callback(msg:b'')
+
+- 回调入参
 
 | Parameter name | Type    | Description                |
 | -------------- | ------- | -------------------------- |
 | msg            | b:bytes | 绑定关系变化json格式字符串 |
 
-~~~markup
 - msg消息格式
 
 ```json
@@ -391,35 +431,35 @@ zip -r driver.zip
     }
   ]
 }
-```CopyErrorSuccess
-~~~
+```
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
-  ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxx
-  ```
+```
+EdgeDriverLinkException:code=1000xx,msg=xxxx
+```
 
-- **set_on_status_change_callback(callback)) 函数**
+**set_on_status_change_callback(callback)) 函数**
 
-  设置子设备启用/禁用的回调函数。
+设置子设备启用/禁用的回调函数。
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type     | Description                 |
 | -------------- | -------- | --------------------------- |
 | callback       | Function | 子设备被启用/禁用的回调函数 |
 
-- callback: callback(msg:b'')
-  - 回调入参
+callback: callback(msg:b'')
+
+- 回调入参
 
 | Parameter name | Type    | Description                   |
 | -------------- | ------- | ----------------------------- |
 | msg            | b:bytes | 启用/禁用下发的json格式字符串 |
 
-~~~markup
+
 - msg消息格式
 
 ```json
@@ -431,35 +471,33 @@ zip -r driver.zip
             "DeviceSN": "device1234"
     }]
 }
-```CopyErrorSuccess
-~~~
+```
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
-  ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxx
-  ```
+```
+EdgeDriverLinkException:code=1000xx,msg=xxxx
+```
 
-- **get_topo(timeout=5)) 函数**
+**get_topo(timeout=5)) 函数**
 
-  获取当前网关下的拓扑绑定关系
+获取当前网关下的拓扑绑定关系
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type | Description                          |
 | -------------- | ---- | ------------------------------------ |
 | timeout        | int  | 等待获取拓扑绑定关系超时时间，单位秒 |
 
-- 返回值
+返回值
 
 | Parameter name | Type        | Description            |
 | -------------- | ----------- | ---------------------- |
 | topoString     | Json String | 拓扑关系json数据字符串 |
 
-~~~markup
-- Json格式
+Json格式
 
 ```json
 {
@@ -472,22 +510,21 @@ zip -r driver.zip
     }
   ]
 }
-```CopyErrorSuccess
-~~~
+```
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
-  ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxx
-  ```
+```
+EdgeDriverLinkException:code=1000xx,msg=xxxx
+```
 
-- **add_topo(product_sn, device_sn, timeout=5) 函数**
+**add_topo(product_sn, device_sn, timeout=5) 函数**
 
-  添加拓扑绑定关系
+添加拓扑绑定关系
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type   | Description                       |
 | -------------- | ------ | --------------------------------- |
@@ -495,19 +532,19 @@ zip -r driver.zip
 | device_sn      | String | 子设备设备序列号                  |
 | timeout        | int    | 等待添加成功reply超时时间，单位秒 |
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
-  ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxx
-  ```
+```
+EdgeDriverLinkException:code=1000xx,msg=xxxx
+```
 
-- **delete_topo(product_sn, device_sn, timeout=5) 函数**
+**delete_topo(product_sn, device_sn, timeout=5) 函数**
 
-  删除拓扑绑定关系
+删除拓扑绑定关系
 
-  - 输入参数
+输入参数
 
 | Parameter name | Type   | Description                       |
 | -------------- | ------ | --------------------------------- |
@@ -516,29 +553,30 @@ zip -r driver.zip
 | product_secret | String | 子设备设备密钥                    |
 | timeout        | int    | 等待删除成功reply超时时间，单位秒 |
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
-  ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxx
-  ```
+```
+EdgeDriverLinkException:code=1000xx,msg=xxxx
+```
 
-- **get_edge_online_status() 函数**
+**get_edge_online_status() 函数**
 
-  获取当前边缘网关的在线状态
+获取当前边缘网关的在线状态
 
-  - 返回值
+返回值
 
 | Parameter name | Type | Description |
 | -------------- | ---- | ----------- |
 | status         | Bool | True/False  |
 
-- 返回Exception
+返回Exception
 
-  异常示例：
+异常示例：
 
-  ```
-  EdgeDriverLinkException:code=1000xx,msg=xxxx
-  ```
+```
+EdgeDriverLinkException:code=1000xx,msg=xxxx
+```
+
 

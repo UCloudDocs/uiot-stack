@@ -1,6 +1,6 @@
-# C-SDK 快速入门
+# C SDK使用
 
-本章描述如何在 linux 环境，通过设备端 C-SDK 快速接入 UIoT Core 平台服务。
+本章描述如何在 linux 环境，通过设备端 C-SDK 快速接入 IoT平台平台服务。
 
 本例通过自定义上行、下行Topic，以及规则引擎的M2M功能，将设备上行数据直接转发到同一设备的下行Topic。
 
@@ -24,10 +24,10 @@ sudo yum install -y git make gcc
 
 ## 获取 C-SDK
 
-* [GitHub](https://github.com/ucloud/iot-sdk-c.git)
+* [GitHub](https://github.com/ucloud/iotstack-device-sdk-c.git)
 
 ```
-git clone https://github.com/ucloud/iot-sdk-c.git
+git clone https://github.com/ucloud/iotstack-device-sdk-c.git
 ```
 ## 编译及运行
 
@@ -39,13 +39,8 @@ C-SDK支持 `GNU Make` 构建。
 
 ```
 // 本例仅使用消息上下行收发，所以关闭其他模块
-FEATURE_MQTT_COMM_ENABLED               = y     # 是否打开MQTT通道
-FEATURE_DEVICE_SHADOW_ENABLED           = n     # 是否打开设备影子
-FEATURE_OTA_ENABLED                     = n     # 是否打开OTA固件升级
-FEATURE_DEVICE_MODEL_ENABLED            = n     # 是否打开物模型
-FEATURE_FILE_UPLOAD_ENABLED             = n     # 是否打开文件上传
-
-FEATURE_AUTH_MODE_DYNAMIC               = n     # 是否使能设备动态注册
+FEATURE_MQTT_COMM_ENABLED               = y     # 是否打开MQTT连接云平台
+FEATURE_AUTH_MODE_DYNAMIC               = y     # 是否打开设备动态注册
 FEATURE_SUPPORT_TLS                     = y     # 是否打开TLS支持
 FEATURE_SDK_TESTS_ENABLED               = n     # 是否打开SDK测试用例编译
 ```
@@ -106,7 +101,7 @@ HAL层是对不同操作系统的抽象，HAL层适配了不同操作系统关�
 
 ```
   // 接入IoT平台三要素（需要根据控制台信息修改）
-  #define UIOT_MY_PRODUCT_SN            "6yggf1so12ex2ska"
+  #define UIOT_MY_PRODUCT_SN            "6yggf1so3452ska"
   #define UIOT_MY_DEVICE_SN             "00:12:13:14:15:16"
   #define UIOT_MY_DEVICE_SECRET         "qnom9gil9h59x96s"
 ```
@@ -181,7 +176,7 @@ static int _register_subscribe_topics(void *client)
     static char topic_name[128] = {0};
 	
 	// 订阅的Topic：/${ProductSN}/${DeviceSN}/set
-    int size = HAL_Snprintf(topic_name, sizeof(topic_name), "/%s/%s/%s", UIOT_MY_PRODUCT_SN, UIOT_MY_DEVICE_SN, "set");
+    int size = HAL_Snprintf(topic_name, sizeof(topic_name), "/%s/%s/set", UIOT_MY_PRODUCT_SN, UIOT_MY_DEVICE_SN);
     if (size < 0 || size > sizeof(topic_name) - 1)
     {
         HAL_Printf("topic content length not enough! content size:%d  buf size:%d\n", size, (int)sizeof(topic_name));
@@ -215,7 +210,7 @@ static int _publish_msg(void *client)
 {
     char topicName[128] = {0};
 	// 发布消息的Topic：/${ProductSN}/${DeviceSN}/upload
-    HAL_Snprintf(topicName, 128, "/%s/%s/%s", UIOT_MY_PRODUCT_SN, UIOT_MY_DEVICE_SN, "upload");
+    HAL_Snprintf(topicName, 128, "/%s/%s/upload", UIOT_MY_PRODUCT_SN, UIOT_MY_DEVICE_SN);
 
     PublishParams pub_params = DEFAULT_PUB_PARAMS;
     pub_params.qos = QOS1;
