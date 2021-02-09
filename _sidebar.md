@@ -99,6 +99,7 @@
 		* [HAL接口详细说明](/uiot-stack/直连设备开发指南/C_SDK使用参考/HAL接口详细说明)
 		* [MQTT与设备认证开发](/uiot-stack/直连设备开发指南/C_SDK使用参考/MQTT与设备认证开发)
 		* [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C_SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
-
+* 最佳实践
+  * [基于官方Modbus RTU驱动获取传感器温湿度 ](/uiot-stack/最佳实践/modbusrtu)
 
 
