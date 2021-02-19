@@ -109,7 +109,7 @@ int main(int argc, char **argv)
         snprintf(topic_str, 512, "/%s/%s/upload", arrary_productsn->valuestring, arrary_devicesn->valuestring);
 
         // 3. 初始化一个子设备，并传入回调函数接口
-        subdevClient = edge_subdev_construct(arrary_productsn->valuestring, arrary_devicesn->valuestring, edge_normal_msg_handler_user);
+        subdevClient = edge_subdev_construct(arrary_productsn->valuestring, arrary_devicesn->valuestring, edge_normal_msg_handler_user, edge_rrpc_msg_handler_user);
 
         // 4. 子设备登录
         status = edge_subdev_login_async(subdevClient);
