@@ -15,7 +15,7 @@ RRPC是基于MQTT协议制定的一套请求和响应的同步机制，IoT平台
 
 ## 子设备驱动RRPC使用方法
 
-子设备驱动（Modbus dlt645等）都已支持RRPC功能，无需增加代码逻辑和驱动配置。
+子设备驱动（Modbus DLT645等）都已支持RRPC功能，无需增加代码逻辑和驱动配置。
 
 
 
@@ -25,7 +25,7 @@ RRPC是基于MQTT协议制定的一套请求和响应的同步机制，IoT平台
 
 1. 安装部署完Modbus子设备驱动；
 2. 添加云端和子设备上行和下行的RRPC消息路由；
-3. 通过设备调试发送操作到modbus驱动；
+3. 通过设备调试发送操作到Modbus驱动；
 
 **增加云平台RRPC消息发送到子设备的消息路由**
 
@@ -43,6 +43,6 @@ RRPC是基于MQTT协议制定的一套请求和响应的同步机制，IoT平台
 
 ## 应用使用RRPC方法
 
-应用可直接调用RRPCAPI（/api/v1/mqtt/rrpc）向设备发送Topic消息并同步获得执行结果。
+应用可直接调用RRPC API（/api/v1/mqtt/rrpc）向设备发送Topic消息并同步获得执行结果。
 
-API调用方法[查看链接](uiot-stack/IoT平台开发指南/消息通信?id=Publish_MQTT消息)
+API调用方法[查看链接](uiot-stack/IoT平台开发指南/消息通信?id=RRPC消息)

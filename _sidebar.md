@@ -1,4 +1,4 @@
-<div class="sidebar_title icon__uiotstack"> UIoT Stack</div>      
+<div class="sidebar_title icon__uiotstack"> IoT Stack</div>      
 
 * [产品简介](/uiot-stack/产品简介)
 * 控制台操作指南
@@ -33,8 +33,9 @@
   * 网关管理
     * [网关功能概述](/uiot-stack/控制台操作指南/网关管理/网关功能概述)
     * 软件安装
-      * [开机自启动设置](/uiot-stack/控制台操作指南/网关管理/软件安装/开机自启动设置)
       * [软件安装](/uiot-stack/控制台操作指南/网关管理/软件安装/软件安装)
+      * [开机自启动设置](/uiot-stack/控制台操作指南/网关管理/软件安装/开机自启动设置)
+
     * [子设备管理](/uiot-stack/控制台操作指南/网关管理/子设备管理)
     * 设备驱动
     	* [设备驱动概览](/uiot-stack/控制台操作指南/网关管理/设备驱动/设备驱动概览)

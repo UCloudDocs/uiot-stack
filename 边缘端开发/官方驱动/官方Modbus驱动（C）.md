@@ -6,13 +6,6 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
 
 Modbus驱动C语言版支持三种CPU架构：arm64、arm7、amd64
 
-C语言版本具有python版的绝大部分功能（除Modbus Binary Formate），且相比较python有以下优点：
-
-1. 占用flash、RAM更小，运行速度更快，实时性更好；
-2. 支持主动读属性；
-3. 支持写操作返回是否成功reply；
-4. 支持时间戳设置纳秒、毫秒、秒；
-
 **Modbus 官方驱动支持以下功能：**
 
 - 支持配置多通道、多传感器数据采集
@@ -150,7 +143,7 @@ C语言版本具有python版的绝大部分功能（除Modbus Binary Formate）�
 
 - channel: { channel1，channel2, ... } 表示不同的通道的自定义名称及Modbus报文格式。通道的配置分为数据传输层（method）和数据报文表示层（format）。通过数据传输层和数据报文表示层的不同组合可以组合成“Modbus RTU”，“Modbus ASCII”，“Modbus TCP”，“Modbus RTU over TCP”等不同形式。
 
-  - format：必填，数据报文表示层的类型，包括"rtu"，"ascii"，"socket"三种，各个格式的具体介绍，参见[本节报文格式介绍](https://docs.ucloud.cn/uiot-edge/edge_development/offical_driver/offical_modbus_driver?id=format字段-报文格式介绍)
+  - format：必填，数据报文表示层的类型，包括"rtu"，"ascii"，"socket"三种，各个格式的具体介绍，参见本节报文格式介绍
 
   - method：必填，使用数据传输层类型，包括"serial"，"tcp"，"udp"三种
 
