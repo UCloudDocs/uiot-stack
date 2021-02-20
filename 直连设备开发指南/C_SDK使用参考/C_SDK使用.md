@@ -101,9 +101,9 @@ HAL层是对不同操作系统的抽象，HAL层适配了不同操作系统关�
 
 ```
   // 接入IoT平台三要素（需要根据控制台信息修改）
-  #define UIOT_MY_PRODUCT_SN            "6yggf1so3452ska"
-  #define UIOT_MY_DEVICE_SN             "00:12:13:14:15:16"
-  #define UIOT_MY_DEVICE_SECRET         "qnom9gil9h59x96s"
+  #define IOT_MY_PRODUCT_SN            "6yggf1so3452ska"
+  #define IOT_MY_DEVICE_SN             "00:12:13:14:15:16"
+  #define IOT_MY_DEVICE_SECRET         "qnom9gil9h59x96s"
 ```
 
 3. main函数详解
