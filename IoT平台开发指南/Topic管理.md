@@ -15,7 +15,7 @@ Host: localhost:8080
 |URL|`/api/v1/topic/create`，URL 地址|
 |Context-Type|application/json|
 
-Post Json 参数
+POST JSON 参数
 
 |参数名称|必选|类型|描述|
 |---|---|---|---|
@@ -149,7 +149,7 @@ Host: localhost:8080
 |URL|`/api/v1/topic/update`，URL 地址|
 |Context-Type|application/json|
 
-Post Json 参数
+POST JSON 参数
 
 |参数名称|必选|类型|描述|
 |---|---|---|---|
@@ -188,7 +188,7 @@ Host: localhost:8080
 |URL|`/api/v1/topic/delete`，URL 地址|
 |Context-Type|application/json|
 
-Post 参数
+POST 参数
 
 |参数名称|必选|类型|描述|
 |---|---|---|---|
