@@ -82,7 +82,7 @@ Authorization|用户登录时获取的Token
 
 
 
-4. 请求接口获取响应
+5. 请求接口获取响应
 
    通过HTTPS GET或POST得到响应结果
 
