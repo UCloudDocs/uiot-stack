@@ -182,7 +182,7 @@ wget --no-check-certificate -O iot_edge_process.sh https://IP:8086/public/edge/1
 
 **4、驱动配置**
 
-- 配置action为读输入寄存器，分别以data.temperature，data.humidity的json字段格式上报；
+- 配置action为读输入寄存器，分别以data.temperature，data.humidity的JSON字段格式上报；
 
 - 配置action为写保持寄存器，写入data.temperature_fix，data.humidity_fix，data.temp_humi_fix下发的值；
 
