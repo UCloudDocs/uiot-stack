@@ -7,7 +7,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
 **Modbus 官方驱动支持以下功能：**
 
 - 支持配置多通道、多传感器数据采集
-- 支持通过自定义Topic上报数据，数据格式支持自定义json
+- 支持通过自定义Topic上报数据，数据格式支持自定义JSON
 - 支持周期性上报（cycle）和数据变化上报（onchange）
 - 支持设置上报周期，默认是30秒
 - 支持连续读写多个寄存器
@@ -26,7 +26,7 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
 
 使用官方Modbus驱动需要进行【驱动配置】和【子设备配置】。
 
-【驱动配置】：配置通道信息（/dev/ttyS0,9600,8N1 ...）、属性集合，对应Modbus命令和上报json字段。
+【驱动配置】：配置通道信息（/dev/ttyS0,9600,8N1 ...）、属性集合，对应Modbus命令和上报JSON字段。
 
 【子设备配置】：配置子设备所在通道及使用的属性集合。
 
@@ -153,20 +153,20 @@ Modbus官方驱动目前支持Modbus RTU和Modbus TCP两种模式。
   - period：属性上报时间周期，单位为秒，支持小数，默认为30
 
 - modbus_config 表示属性集合配置，名称自定义
-  - read：选填，定义需要读取的寄存器值并转换成json上报数据包，该项为数组
+  - read：选填，定义需要读取的寄存器值并转换成JSON上报数据包，该项为数组
     - action：必填，读功能码，可选为：**"01H","02H","03H","04H"**
     - address：必填，读寄存器地址
     - number：选填，读寄存器个数。number=1，代表读一个16bit数据
-    - prop_list：必填，设置modbus与json的对应关系，prop_list为数组，按先后顺序根据count值决定读取第几个寄存器或第几个位
-      - name：必填，自定义jsonpath或者`-`，代表数据上报到云端如何组成json包；当该字段为`-`时，代表跳过该count长度的寄存器或bit位
-      - type：选填，json组包时的上报类型，支持int，uint，float，string，默认为 int；当读线圈或离散是，忽略该字段，默认为bool类型bool 数组
+    - prop_list：必填，设置modbus与JSON的对应关系，prop_list为数组，按先后顺序根据count值决定读取第几个寄存器或第几个位
+      - name：必填，自定义JSONpath或者`-`，代表数据上报到云端如何组成JSON包；当该字段为`-`时，代表跳过该count长度的寄存器或bit位
+      - type：选填，JSON组包时的上报类型，支持int，uint，float，string，默认为 int；当读线圈或离散是，忽略该字段，默认为bool类型bool 数组
       - count：选填，默认值为1
       - scale：选填，缩放系数，将读取的值乘以scale上报
       - offset：选填，偏移系数，将读取的值加offset上报
       - swap16：选填，true/false，修改大小端，是否交换寄存器的高8位和低8位后再换算
       - swap32：选填，true/false，修改大小端，当寄存器count=2时，是否交换两个寄存器的数据后再换算
-  - write：选填，定义写入寄存器值和下行json数据包对应的关系，该项为数组
-    - device.coil1,device.coil2,device.coil1_coil2为jsonpath，用户根据自己需要组包的json的格式自定义
+  - write：选填，定义写入寄存器值和下行JSON数据包对应的关系，该项为数组
+    - device.coil1,device.coil2,device.coil1_coil2为JSONpath，用户根据自己需要组包的JSON的格式自定义
     - action：必填，写功能码，可选为：**"05H","06H","0FH","10H"**
     - address：必填，写寄存器地址
   - timestamp: 选填，true/false，上报数据是否带时间戳，时间戳为Unix时间戳，默认值为false

@@ -31,7 +31,7 @@ git clone https://github.com/ucloud/iotstack-application-sdk-c.git
    用户使用，请参考文件 samples/samples.c */
 
 // 定义下行消息callback接口
-void recvmsg_handler(char *topic, char *payload)
+void app_normal_msg_handler(char *topic, char *payload)
 {
     //打印接收到的下次消息内容
     log_write(LOG_INFO, "receive topic:%s",topic);
@@ -75,7 +75,7 @@ int main(int argc, char **argv)
     log_write(LOG_INFO, "app info:%s",app_get_info());
 
     //注册回调函数，回调函数处理接收到的下行消息
-    status = app_register_cb(recvmsg_handler);
+    status = app_register_cb(app_normal_msg_handler, app_rrpc_msg_handler);
     if(APP_OK != status)
     {
         log_write(LOG_ERROR, "app_register_cb fail");
@@ -135,7 +135,8 @@ zip -r driver.zip main
 
 **上传应用zip压缩包到应用管理**
 
-**填写应用配置json**
+**填写应用配置JSON**
+
 ```
 本例为：
 {
@@ -200,7 +201,7 @@ char *app_get_info(void)
 入参：无
 
 
-出参：返回应用信息的json字符串
+出参：返回应用信息的JOSN字符串
 
 **注册云平台到应用的下行消息处理回调函数**
 
