@@ -1,4 +1,4 @@
-<div class="sidebar_title icon__uiotstack"> UIoT Stack</div>      
+<div class="sidebar_title icon__uiotstack"> IoT Stack</div>      
 
 * [产品简介](/uiot-stack/产品简介)
 * 控制台操作指南
@@ -33,8 +33,9 @@
   * 网关管理
     * [网关功能概述](/uiot-stack/控制台操作指南/网关管理/网关功能概述)
     * 软件安装
-      * [开机自启动设置](/uiot-stack/控制台操作指南/网关管理/软件安装/开机自启动设置)
       * [软件安装](/uiot-stack/控制台操作指南/网关管理/软件安装/软件安装)
+      * [开机自启动设置](/uiot-stack/控制台操作指南/网关管理/软件安装/开机自启动设置)
+
     * [子设备管理](/uiot-stack/控制台操作指南/网关管理/子设备管理)
     * 设备驱动
     	* [设备驱动概览](/uiot-stack/控制台操作指南/网关管理/设备驱动/设备驱动概览)
@@ -99,6 +100,7 @@
 		* [HAL接口详细说明](/uiot-stack/直连设备开发指南/C_SDK使用参考/HAL接口详细说明)
 		* [MQTT与设备认证开发](/uiot-stack/直连设备开发指南/C_SDK使用参考/MQTT与设备认证开发)
 		* [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C_SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
-
+* 最佳实践
+  * [基于官方Modbus RTU驱动获取传感器温湿度 ](/uiot-stack/最佳实践/modbusrtu)
 
 

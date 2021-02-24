@@ -497,7 +497,7 @@ EdgeDriverLinkException:code=1000xx,msg=xxxx
 | -------------- | ----------- | ---------------------- |
 | topoString     | Json String | 拓扑关系json数据字符串 |
 
-Json格式
+JSON格式
 
 ```json
 {

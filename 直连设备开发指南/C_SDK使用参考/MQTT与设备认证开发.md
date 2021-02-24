@@ -54,10 +54,10 @@ event_handler.f_fp需要用户自己实现，用于处理IoT平台的MQTT响应�
 
 ```
 /* 产品序列号, 与IoT平台同步设备状态时需要  */
-#define UIOT_MY_PRODUCT_SN            "dpetdroyt44ryjoh"/*     
+#define IOT_MY_PRODUCT_SN            "dpetdroyt44ryjoh"/*     
 设备序列号, 与云端同步设备状态时需要, 静态认证后的设备不能进行动态认证，    因此每次执行该用例需要新建一个设备。*/
-#define UIOT_MY_DEVICE_SN             "pn15di85odl6n6g8"
-#define UIOT_MY_PRODUCT_SECRET        "1b1j2gimjlftmtid"
+#define IOT_MY_DEVICE_SN             "pn15di85odl6n6g8"
+#define IOT_MY_PRODUCT_SECRET        "1b1j2gimjlftmtid"
 
 ...
 
@@ -70,11 +70,11 @@ void event_handler(void *pclient, void *handle_context, MQTTEventMsg *msg)
 
 static int _setup_connect_init_params(MQTTInitParams* initParams)
 {
-	initParams->device_sn = (char *)UIOT_MY_DEVICE_SN;
-	initParams->product_sn = (char *)UIOT_MY_PRODUCT_SN;
-	initParams->product_secret = (char *)UIOT_MY_PRODUCT_SECRET;  //动态认证需要产品密钥
-	initParams->command_timeout = UIOT_MQTT_COMMAND_TIMEOUT;
-	initParams->keep_alive_interval_ms = UIOT_MQTT_KEEP_ALIVE_INTERNAL;
+	initParams->device_sn = (char *)IoT_MY_DEVICE_SN;
+	initParams->product_sn = (char *)IoT_MY_PRODUCT_SN;
+	initParams->product_secret = (char *)IoT_MY_PRODUCT_SECRET;  //动态认证需要产品密钥
+	initParams->command_timeout = IoT_MQTT_COMMAND_TIMEOUT;
+	initParams->keep_alive_interval_ms = IoT_MQTT_KEEP_ALIVE_INTERNAL;
 	initParams->auto_connect_enable = 1;
 	initParams->event_handler.h_fp = event_handler;
 	initParams->event_handler.context = NULL;    
@@ -131,19 +131,19 @@ static int _setup_connect_init_params(MQTTInitParams* initParams)
 将IoT平台上创建的设备信息替换以下宏。
 
 ```
-#define UIOT_MY_PRODUCT_SN            "dpetdroyt44ryjoh"
-#define UIOT_MY_DEVICE_SN             "5q3en2xpj3gmmshn"
-#define UIOT_MY_DEVICE_SECRET         "i74mv5vxw2kyz4cw" ...
+#define IoT_MY_PRODUCT_SN            "dpetdroyt44ryjoh"
+#define IoT_MY_DEVICE_SN             "5q3en2xpj3gmmshn"
+#define IoT_MY_DEVICE_SECRET         "i74mv5vxw2kyz4cw" ...
 
 ...
 
 static int _setup_connect_init_params(MQTTInitParams* initParams)
 {
-	initParams->device_sn = UIOT_MY_DEVICE_SN;
-	initParams->product_sn = UIOT_MY_PRODUCT_SN;
-	initParams->device_secret = UIOT_MY_DEVICE_SECRET; //静态认证需要设备密钥
-	initParams->command_timeout = UIOT_MQTT_COMMAND_TIMEOUT;
-	initParams->keep_alive_interval_ms = UIOT_MQTT_KEEP_ALIVE_INTERNAL;
+	initParams->device_sn = IoT_MY_DEVICE_SN;
+	initParams->product_sn = IoT_MY_PRODUCT_SN;
+	initParams->device_secret = IoT_MY_DEVICE_SECRET; //静态认证需要设备密钥
+	initParams->command_timeout = IoT_MQTT_COMMAND_TIMEOUT;
+	initParams->keep_alive_interval_ms = IoT_MQTT_KEEP_ALIVE_INTERNAL;
 	initParams->auto_connect_enable = 1;
 	initParams->event_handler.h_fp = event_handler;
 	initParams->event_handler.context = NULL;    
