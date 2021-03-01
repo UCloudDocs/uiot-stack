@@ -1,6 +1,6 @@
 <div class="sidebar_title icon__uiotstack"> IoT Stack</div>      
 
-* [产品简介.](/uiot-stack/产品简介)
+* [产品简介](/uiot-stack/产品简介)
 * 控制台操作指南
   * 账号及项目管理
     * [账号登录](/uiot-stack/控制台操作指南/账号及项目管理/账号登录)
