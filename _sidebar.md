@@ -60,7 +60,7 @@
       * [操作指南](/uiot-stack/控制台操作指南/网关管理/本地控制台操作指南/操作指南)
   * [监控视图](/uiot-stack/控制台操作指南/监控视图)
   * [日志管理](/uiot-stack/控制台操作指南/日志管理)
-* IoT平台API列表
+* 平台API列表
   * [API调用规范及示例](/uiot-stack/IoT平台开发指南/API调用规范及示例)
   * [API列表](/uiot-stack/IoT平台开发指南/API列表)
   * [产品及设备管理](/uiot-stack/IoT平台开发指南/产品及设备管理)
