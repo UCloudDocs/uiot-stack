@@ -61,7 +61,7 @@
 * 平台API列表
   * [API调用规范及示例](/uiot-stack/IoT平台开发指南/API调用规范及示例)
   * [API列表](/uiot-stack/IoT平台开发指南/API列表)
-  * [账号及项目管理](/uiot-stack/IoT平台开发指南/账号及项目管理)
+  * [账户及项目管理](/uiot-stack/IoT平台开发指南/账户及项目管理)
   * [产品及设备管理](/uiot-stack/IoT平台开发指南/产品及设备管理)
   * [Topic管理](/uiot-stack/IoT平台开发指南/Topic管理)
   * [数据解析](/uiot-stack/IoT平台开发指南/数据解析)
