@@ -40,7 +40,7 @@ static void edge_normal_msg_handler_user(char *topic, char *payload, int payload
     /*
     增加逻辑，处理云端到子设备驱动端的下行消息
     */
-	return;
+    return;
 }
 
 //rrpc消息处理接口
@@ -276,10 +276,10 @@ subdev_client * edge_subdev_construct(const char *product_sn, const char *device
 - 成功 - 返回subdev_client指针
 - 失败 - 返回NULL
 
-### _publish_string
+### edge_publishString
 
 ```c
-edge_status _publish_string(const char *topic, const char *str)
+edge_status edge_publishString(const char *topic, const char *str)
 ```
 
 向指定topic发布字符串消息。
