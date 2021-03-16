@@ -34,25 +34,26 @@ git clone https://github.com/ucloud/iotstack-driver-sdk-c.git
    用户使用，请参考文件 ./samples/iotstack_driver_test.c */
 
 // 定义下行消息callback接口
-static void edge_normal_msg_handler_user(char *topic, char *payload)
+static void edge_normal_msg_handler_user(char *topic, char *payload, int payloadLen)
 {
-    log_write(LOG_INFO, "topic:%s payload:%s", topic, payload);
+    log_write(LOG_INFO, "topic:%s payload:%s payloadLen:%d", topic, payload, payloadLen);
     /*
     增加逻辑，处理云端到子设备驱动端的下行消息
     */
-
+	return;
 }
 
 //rrpc消息处理接口
-static void edge_rrpc_msg_handler_user(char *topic, char *payload)
+static void edge_rrpc_msg_handler_user(char *topic, char *payload, int payloadLen)
 {
-    log_write(LOG_INFO, "rrpc topic:%s payload:%s", topic, payload);
+    log_write(LOG_INFO, "rrpc topic:%s payload:%s payloadLen:%d", topic, payload, payloadLen);
     /*
     增加逻辑，处理云端到子设备驱动端的rrpc消息
     */
 	
     //将处理完成的payload填入edge_rrpc_response的第二个入参，作为rrpc的执行结果返回云端
-    edge_rrpc_response(topic, "rrpc response message!");
+    char *response_msg = "rrpc response message!";
+    edge_rrpc_response(topic, response_msg, strlen(response_msg));
     return;
 }
 
@@ -131,7 +132,7 @@ int main(int argc, char **argv)
             "relay_status": "on"/"off
         }
         */
-        status = edge_publish(topic_str, time_stamp);
+        status = edge_publishString(topic_str, time_stamp);
     }
 }
 ```
@@ -275,13 +276,13 @@ subdev_client * edge_subdev_construct(const char *product_sn, const char *device
 - 成功 - 返回subdev_client指针
 - 失败 - 返回NULL
 
-### edge_publish
+### _publish_string
 
 ```c
-edge_status edge_publish(const char *topic, const char *str)
+edge_status _publish_string(const char *topic, const char *str)
 ```
 
-向指定topic发布消息。
+向指定topic发布字符串消息。
 
 **输入参数**
 
@@ -289,6 +290,27 @@ edge_status edge_publish(const char *topic, const char *str)
 | -------------- | ------------ | ----------------- |
 | topic          | const char * | 发送消息的Topic   |
 | str            | const char * | 发送消息的Payload |
+
+**返回值**
+
+- 成功 - 返回EDGE_OK
+- 失败 - 返回类型参考：edge_status枚举
+
+### edge_publish
+
+```c
+edge_status edge_publish(const char *topic, const char *data, int dataLen)
+```
+
+向指定topic发布消息，可以发送二进制消息。
+
+**输入参数**
+
+| Parameter name | Type         | Description           |
+| -------------- | ------------ | ----------------------|
+| topic          | const char * | 发送消息的Topic       |
+| data           | const char * | 发送消息的Payload     |
+| dataLen        | int          | 发送消息的Payload长度 |
 
 **返回值**
 

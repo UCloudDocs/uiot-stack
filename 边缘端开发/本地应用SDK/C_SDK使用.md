@@ -31,11 +31,11 @@ git clone https://github.com/ucloud/iotstack-application-sdk-c.git
    用户使用，请参考文件 samples/samples.c */
 
 // 定义下行消息callback接口
-void app_normal_msg_handler(char *topic, char *payload)
+void app_normal_msg_handler(char *topic, char *payload, int payloadLen)
 {
     //打印接收到的下次消息内容
     log_write(LOG_INFO, "receive topic:%s",topic);
-    log_write(LOG_INFO, "receive payload:%s",payload);
+    log_write(LOG_INFO, "receive payload:%s payloadLen:%d",payload, payloadLen);
     /*
     	在此处编写云端到应用的下行消息处理逻辑
     */
@@ -43,16 +43,17 @@ void app_normal_msg_handler(char *topic, char *payload)
 }
 
 //rrpc下行消息处理接口
-void app_rrpc_msg_handler(char *topic, char *payload)
+void app_rrpc_msg_handler(char *topic, char *payload, int payloadLen)
 {
     log_write(LOG_INFO, "rrpc topic:%s",topic);
-    log_write(LOG_INFO, "rrpc payload:%s",payload);
+    log_write(LOG_INFO, "rrpc payload:%s payloadLen:%d",payload, payloadLen);
     /*
     增加逻辑，处理云端到子设备驱动端的rrpc消息
     */
 	
     //将处理完成的payload填入edge_rrpc_response的第二个入参，作为rrpc的执行结果返回云端
-    app_rrpc_response(topic, "rrpc response sample!");
+    char *response_str = "rrpc response sample!";
+    app_rrpc_response(topic, response_str, strlen(response_str));
     return;
 }
 
@@ -104,7 +105,10 @@ int main(int argc, char **argv)
         snprintf(time_stamp, 100, "{\"timestamp\": \"%ld\"}", stamp.tv_sec);
         log_write(LOG_INFO, "send message[%s]", time_stamp);
         
+		//发送字符串
         status = app_publish(topic_str, time_stamp);
+		//发送二进制内容
+		status |= app_publish(topic_str, "0D0A2131", 8);
         if(APP_OK!= status)
         {
             log_write(LOG_ERROR, "app_publish fail");
@@ -216,3 +220,29 @@ app_status edge_status app_register_cb(msg_handler handle, msg_handler rrpc_hand
 
 
 出参：执行结果，成功返回APP_OK
+
+**向topic发送字符串消息**
+
+```
+app_status app_publishString(const char *topic, const char *str)
+```
+
+入参：topic：topic名称  </br>
+      str：  发送字符串消息内容
+
+
+出参：执行结果，成功返回APP_OK
+
+**向topic发送消息，可以发送二进制内容**
+
+```
+app_status app_publish(const char *topic, const char *data, int dataLen)
+```
+
+入参：topic：	topic名称  </br>
+      data： 	发送消息内容 </br>
+	  dataLen:  发送消息内容长度
+
+
+出参：执行结果，成功返回APP_OK
+
