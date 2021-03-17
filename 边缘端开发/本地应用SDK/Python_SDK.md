@@ -1,5 +1,39 @@
 # Python SDK参考文档
 
+本文介绍Python3 SDK的使用，用户可以根据提供的API接口进行应用数据上下行逻辑。
+
+## 使用要求
+
+- Python 版本 ≥ 3.5.3
+
+## 应用SDK使用流程
+
+**下载Python3 SDK**
+
+```bash
+ pip3 install iotedge_application_link_sdk
+```
+
+**创建`index.py`文件**
+
+**打包应用**
+
+```bash
+#打包应用SDK，"-t ."，表示下载python包到当前目录，用于打包上传到应用管理
+pip3 install -t . iotedge_application_link_sdk  
+pip3 install -t . jsonpath otherpackages #打包自己的依赖
+zip -r app.zip
+```
+
+> 打包需要同时包含所有依赖。
+
+* 上传应用zip压缩包到应用管理
+* 分配应用到网关设备
+* 进行测试
+* 配置路由后，通过日志模块查看上下行消息内容
+
+
+# 驱动API介绍
 
 ## from iotedgeapplicationlinksdk
 * **[getLogger()](#getLogger)**
