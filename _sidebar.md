@@ -87,7 +87,7 @@
       * [C SDK使用](/uiot-stack/边缘端开发/子设备驱动/子设备驱动SDK/C_SDK使用)
   * 本地应用SDK
     * [C SDK使用](/uiot-stack/边缘端开发/本地应用SDK/C_SDK使用)
-    * [Python_SDK使用](/uiot-stack/边缘端开发/本地应用SDK/Python_SDK)
+    * [Python SDK使用](/uiot-stack/边缘端开发/本地应用SDK/Python_SDK)
   * 函数计算
     * [使用示例](/uiot-stack/边缘端开发/函数计算/函数功能开发及示例)
 
