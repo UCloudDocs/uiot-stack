@@ -134,7 +134,7 @@ make
 
 ```
 mv samples main
-zip -r driver.zip main
+zip -r app.zip main
 ```
 
 **上传应用zip压缩包到应用管理**
