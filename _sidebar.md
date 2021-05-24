@@ -18,7 +18,7 @@
     * [数据解析](/uiot-stack/控制台操作指南/产品管理/数据解析)
     * [其他功能](/uiot-stack/控制台操作指南/产品管理/其他功能)
   * 规则引擎
-    * [规则引擎概述](/uiot-stack/控制台操作指南/规则引擎/规则引擎概览)
+    * [规则引擎概述](/uiot-stack/控制台操作指南/规则引擎/规则引擎概述)
     * [数据流转管理](/uiot-stack/控制台操作指南/规则引擎/数据流转管理)
     * [SQL表达式特性](/uiot-stack/控制台操作指南/规则引擎/SQL表达式特性)
     * 添加动作
@@ -26,9 +26,13 @@
       * [存储到MongoDB](/uiot-stack/控制台操作指南/规则引擎/添加动作/存储到MongoDB)
       * [存储到PgSQL](/uiot-stack/控制台操作指南/规则引擎/添加动作/存储到PgSQL)
       * [存储到TSDB](/uiot-stack/控制台操作指南/规则引擎/添加动作/存储到TSDB)
+      * [存储到ClickHouse](/uiot-stack/控制台操作指南/规则引擎/添加动作/存储到ClickHouse)
       * [发布到Kafka](/uiot-stack/控制台操作指南/规则引擎/添加动作/发布到Kafka)
       * [发布到HTTP](/uiot-stack/控制台操作指南/规则引擎/添加动作/发布到HTTP)
       * [发布到Topic](/uiot-stack/控制台操作指南/规则引擎/添加动作/发布到Topic)
+  * 固件升级（OTA）
+    * [固件升级概述](/uiot-stack/控制台操作指南/固件升级/固件升级概述)
+    * [控制台操作指南](/uiot-stack/控制台操作指南/固件升级/控制台操作指南)
   * 边缘网关管理
     * [网关功能概述](/uiot-stack/控制台操作指南/网关管理/网关功能概述)
     * 软件安装
@@ -105,6 +109,7 @@
   * 设备连接
     * [基于MQTT-TCP协议建立连接](/uiot-stack/直连设备开发指南/设备连接/基于MQTT-TCP协议建立连接)
     * [获取设备在线状态](/uiot-stack/直连设备开发指南/设备连接/获取设备在线状态)	
+  * [设备固件升级（OTA）](/uiot-stack/直连设备开发指南/设备固件升级（OTA）)
   * C SDK使用参考
     * [C SDK使用](/uiot-stack/直连设备开发指南/C_SDK使用参考/C_SDK使用)
     * [HAL接口详细说明](/uiot-stack/直连设备开发指南/C_SDK使用参考/HAL接口详细说明)
@@ -112,5 +117,4 @@
     * [基于STM32+FreeRTOS+LWIP的SDK移植](/uiot-stack/直连设备开发指南/C_SDK使用参考/基于STM32+FreeRTOS+LWIP的SDK移植)
 * 最佳实践
   * [基于官方Modbus RTU驱动获取传感器温湿度 ](/uiot-stack/最佳实践/modbusrtu)
-
 
