@@ -216,7 +216,7 @@ static int _publish_msg(void *client)
     pub_params.qos = QOS1;
 
     char topic_content[MAX_SIZE_OF_TOPIC_CONTENT + 1] = {0};
-
+、
     // 发送消息内容：{"test": num}
     int size = HAL_Snprintf(topic_content, sizeof(topic_content), "{\"test\": \"%d\"}", sg_count++);
     if (size < 0 || size > sizeof(topic_content) - 1)

@@ -1,160 +1,307 @@
-# 设备固件升级（OTA）
+# 设备固件升级（OTA）开发
 
+IoT 平台支持设备通过 OTA(Over-the-Air Technology) 进行固件升级。本章描述如何利用设备端 C-SDK 提供的API进行设备端 OTA 功能开发。下面的讲解对应于 C-SDK 示例代码 samples/ota/ota_sample.c 。
 
-OTA（Over-the-Air Technology）即空中下载技术。在设备端开发中可以理解为固件升级技术。用户可以基于IoT平台的OTA技术直接进行OTA升级、应用配置远程更新下发等操作。
+## 功能说明
 
+- C-SDK 提供支持固件下载及校验的 API，但固件存储以及烧录需要用户在应用程序中实现。
 
+- 建议在 OTA 功能设计之初预留充足的存储容量以便存放固件，同时充分考虑到烧录的风险，如有必要提前设计烧录失败的回退逻辑。
 
-## 升级状态及升级流程说明
+## 开发步骤
 
-**升级状态**
+**准备**
 
-创建升级任务后设备的升级状态如下
+1. 在控制台创建一个产品和一个设备，替换 ota_sample.c 中的设备四元组信息。
 
-<->:设备未创建过升级任务
+2. 上传一个固件（模块信息版本号任选，与示例代码中的 "1.0.0" 不同即可）。
 
-<待推送>：创建升级任务时设备不在线。设备在线后需上报当前版本，平台校验设备当前版本和升级任务的原版本一致后下发升级任务
+3. 在示例代码启动并上报版本之后，在控制台发起设备升级操作，将设备升级到上传的固件版本。
 
-<已推送>：已向设备推送升级任务信息并获取设备响应
+**初始化**
 
-<升级中>：设备上报升级中
-
-<升级成功>：设备上报升级成功
-
-<升级失败>：设备上报升级失败
-
-<已取消>：平台取消升级任务
-
-**升级流程**
-
-![图片](../images/固件升级-13.png)
-
-**升级状态对应操作**
-
-取消升级：当升级状态为<待推送><已推送><升级中><升级失败>时可取消任务
-取消任务后：
-1、待推送设备不再推送升级信息；已推送设备不做任何操作
-2、设备升级状态改为<已取消>，如设备后续上报升级状态则按照最新状态更新
-
-
-
-## 固件升级使用的Topic
-
-固件升级的过程中涉及两个Topic：
-
-|Topic | 权限|描述|
-|---|---|---|
-|/$system/${productSN}/${deviceSN}/ota/upstream|发布|设备上报固件版本及下载、升级状态|
-|/$system/${productSN}/${deviceSN}/ota/downstream|订阅|设备接收IoT平台下发的固件升级消息|
-
-
-
-## 操作指南
-
-**设备上报版本号**
-设备向`/$system/${productSN}/${deviceSN}/ota/upstream`发布一条消息进行版本上报，消息格式如下：
+在使用 OTA 功能之前，首先需要进行初始化，包括 MQTT 客户端的创建、OTA 的初始化以及版本上报。可参照 ota_sample.c 中 main 函数的初始化部分代码。
 
 ```
-   {
-    "Method": "report",
-    "Payload": {
-        "Version": "1.0",
-        "Module": "module_a"
-    }
+//1. 首先创建MQTT客户端，并与云端建立MQTT连接
+void *client = IOT_MQTT_Construct(&init_params);
+if (client != NULL) {
+    LOG_INFO("MQTT Construct Success");
+} else {
+    LOG_ERROR("MQTT Construct Failed");
+    return FAILURE;
 }
-```
-    参数解释:
-    - Method：消息类型为report_version
-    - Module : 固件模块名称（固件模块为非default时必须添加，否则会被当成default上报处理；如上报的固件模块未在IoT平台添加则上报失败。）
-    - Version：上报的版本号
 
-
-
-**IoT平台下发固件升级消息给设备**
-设备会通过订阅的`/$system/${productSN}/${deviceSN}/ota/downstream`收到固件升级的消息，内容如下：
-
-```
-	{
-    "Method": "notify",
-    "Payload": {
-        "Version": "1.0",
-        "CurrentVersion": "0.1",
-        "Module": "module_a",
-        "URL": "http://xxx/xxx.zip",
-        "MD5": "aa30e838c7cdbbcbf8be7668aaeebee3",
-        "Size": 1024,   // byte
-        "TaskID": "1"
-    }
+//2. OTA 初始化，获取句柄
+void *h_ota = IOT_OTA_Init(UIOT_MY_PRODUCT_SN, UIOT_MY_DEVICE_SN, client);
+if (NULL == h_ota) {
+    LOG_ERROR("init OTA failed");
+    return FAILURE;
 }
-```
-	参数解释：
-	- Method：消息类型为notify
-	- Version：升级版本
-	- CurrentVersion：需要升级设备的原始版本
-	- Module : 固件模块名称
-	- URL：下载固件的url，该URL会在1天后失效，不能下载
-	- MD5：固件的MD5值
-	- Size：固件大小，单位为字节
-	- TaskID：升级任务ID
 
-注：当创建升级任务时设备在线，IoT平台会直接下发升级消息给设备。当创建升级任务时设备离线，设备需在线后需向IoT平台上报当前版本，IoT平台会再次下发升级信息。
-
-
-
-**设备上报升级响应**
-
-设备向`/$system/${productSN}/${deviceSN}/ota/upstream`发布一条消息上报升级响应，消息格式如下：
-```
-{
-    "Method": "notify",
-    "Payload": {
-        "TaskID": "1"
-    }
-}
-```
-    参数解释:
-    - Method：消息类型为notify
-    - TaskID：升级任务ID
-
-
-
-**设备上报升级状态-升级中**
-
-设备在收到固件升级的消息后，根据URL通过HTTP连接下载固件到设备并同时向`/$system/${productSN}/${deviceSN}/ota/upstream`发布一条消息上报升级进度，消息格式如下：
-
-```
-{
-    "Method": "upgrading",
-    "Payload": {
-        "TaskID": "1"
-    }
+//3. 上报初始版本，上报时需上报固件模块、版本号；未上报版本的设备无法升级
+if (IOT_OTA_ReportVersion(h_ota,"default","1.0.0") < 0) {
+    LOG_ERROR("report OTA version failed");
+    return FAILURE;
 }
 ```
 
-    参数解释:
-    - Method：消息类型为upgrading
-    - TaskID：升级任务ID
+**下载及升级流程**
 
-
-
-**设备上报升级状态-升级成功/失败**
-
-设备向`/$system/${productSN}/${deviceSN}/ota/upstream`发布一条消息上报升级结果，消息格式如下：
+流程包括固件的下载、校验、存储和烧录等步骤。由于硬件平台等差异，用户可根据实际情况仿照示例代码实现整个流程。
 
 ```
-{
-    "Method": "success/fail", 
-    "Payload": {
-        "TaskID": "1",
-        "ErrMsg": "firmware not exist"  
+    //初始化下载分区
+    download_handle = HAL_Download_Init(h_ota->download_name);
+    if(download_handle == NULL)
+    {
+        ret = FAILURE_RET;
+        goto __exit;
     }
-}
+	
+    buffer_read = (char *)HAL_Malloc(HTTP_OTA_BUFF_LEN);
+    if (buffer_read == NULL)
+    {
+        LOG_ERROR("No memory for http ota!");
+        ret = FAILURE_RET;
+        goto __exit;
+    }
+    memset(buffer_read, 0x00, HTTP_OTA_BUFF_LEN);
+	
+    //向云端上报开始下载
+	IOT_OTA_ReportUpgrading(h_ota);
+
+    LOG_INFO("OTA file size is (%d)", file_size);
+    do
+    {
+        //获取升级文件内容，并写入下载分区
+        length = IOT_OTA_FetchYield(h_ota, buffer_read, HTTP_OTA_BUFF_LEN, HTTP_OTA_RANGE_LEN, 10);
+        if (length > 0)
+        {
+            /* Write the data to the corresponding partition address */
+            if(HAL_Download_Write(download_handle, total_length, buffer_read, length) == FAILURE_RET){
+                ret = FAILURE_RET;
+                goto __exit;
+            }
+
+            total_length += length;
+            //wait cancel cmd
+            IOT_OTA_Yield(handle, 100);
+        }
+        else
+        {
+            LOG_ERROR("Exit: server return err (%d)!", length);
+            ret = ERR_OTA_FETCH_FAILED;                
+            goto __exit;
+        }
+    } while (!IOT_OTA_IsFetchFinish(h_ota));
+
+    //下载完成，向云端上报下载成功
+    if (total_length == file_size)
+    {    
+        ret = SUCCESS_RET;
+        IOT_OTA_Ioctl(h_ota, OTA_IOCTL_CHECK_FIRMWARE, &firmware_valid, 4);
+        if (0 == firmware_valid) {
+            LOG_ERROR("The firmware is invalid"); 
+            ret = IOT_OTA_GetLastError(h_ota);
+            goto __exit;
+        } else {
+            LOG_INFO("The firmware is valid");            
+            IOT_OTA_ReportSuccess(h_ota);
+        }
+        
+        if(HAL_Download_End(download_handle))
+            ret = FAILURE_RET;
+
+        LOG_INFO("Download firmware to flash success.");
+    }
 ```
 
-    参数解释:
-    - Method：消息类型为success或fail
-    - TaskID：升级任务ID
-    - ErrMsg：错误信息，可选字段
+**资源释放**
 
+固件升级完成后，需要释放 OTA 过程中使用的资源。
 
+```
+//关闭文件
+fclose(fp);
+//释放OTA资源
+IOT_OTA_Destroy(h_ota);
+//（可选）释放 MQTT Client 资源
+IOT_MQTT_Destroy(&client);
+```
+
+## API 列表
+
+### IOT_OTA_Init
+
+初始化 OTA 模块
+
+```
+void *IOT_OTA_Init(const char *product_sn, const char *device_sn, void *ch_signal);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| product_sn | const char * | 输入 | 指向产品序列号的指针 |
+| device_sn | const char * | 输入 | 指向设备序列号的指针 |
+| ch_signal | void * | 输入 | 指定的信号通道，目前为 IOT_MQTT_Construct 返回的句柄 |
+| ret | void * | 返回值 | 初始化成功，返回句柄；初始化失败，返回 NULL |
+
+### IOT_OTA_Destroy
+
+释放 OTA 相关的资源
+
+```
+int IOT_OTA_Destroy(void *handle);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| handle | void * | 输入 | IOT_OTA_Init 返回的句柄 |
+| ret | int | 返回值 | <0: 失败  =0: 成功 |
+
+### IOT_OTA_ReportVersion
+
+向 OTA 服务器报告固件版本信息
+
+```
+int IOT_OTA_ReportVersion(void *handle, const char *module, const char *version);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| handle | void * | 输入 | IOT_OTA_Init 返回的句柄 |
+| module | const char * | 输入 | 以字符串格式指定模块名 |
+| version | const char * | 输入 | 以字符串格式指定固件版本 |
+| ret | int | 返回值 | <0: 上报失败  >0: 成功，返回对应 publish 的 packet id |
+
+### IOT_OTA_ReportSuccess
+
+向 OTA 服务器上报升级成功
+
+```
+int IOT_OTA_ReportSuccess(void *handle);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| handle | void * | 输入 | IOT_OTA_Init 返回的句柄 |
+| ret | int | 返回值 | <0: 上报失败  >0: 成功，返回对应 publish 的 packet id |
+
+### IOT_OTA_ReportFail
+
+向 OTA 服务器上报失败信息
+
+```
+int IOT_OTA_ReportFail(void *handle, IOT_OTA_ReportErrCode err_code);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| handle | void * | 输入 | IOT_OTA_Init 返回的句柄 |
+| err_code | IOT_OTA_ReportErrCode | 输入 | 错误码 |
+| ret | int | 返回值 | <0: 上报失败  >0: 成功，返回对应 publish 的 packet id |
+
+### IOT_OTA_IsFetching
+
+检查是否处于下载固件的状态
+
+```
+int IOT_OTA_IsFetching(void *handle);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| handle | void * | 输入 | IOT_OTA_Init 返回的句柄 |
+| ret | int | 返回值 | 0: No  1: Yes |
+
+### IOT_OTA_IsFetchFinish
+
+检查固件是否已经下载完成
+
+```
+int IOT_OTA_IsFetchFinish(void *handle);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| handle | void * | 输入 | IOT_OTA_Init 返回的句柄 |
+| ret | int | 返回值 | 0: No  1: Yes |
+
+### IOT_OTA_FetchYield
+
+从远程服务器获取固件
+
+```
+int IOT_OTA_FetchYield(void *handle, char *buf, size_t buf_len, uint32_t timeout_s);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| handle | void * | 输入 | IOT_OTA_Init 返回的句柄 |
+| buf | char * | 输出 | 指定存储固件数据的缓冲区 |
+| buf_len | size_t | 输入 | buf 的长度 |
+| timeout_s | uint32_t | 输入 | 超时时间 |
+| ret | int | 返回值 | <0: 对应的错误码  0: 在 timeout_s 超时期间内没有任何数据被下载 (0, len] : 在 timeout_s 超时时间内下载数据的长度 |
+
+### IOT_OTA_Ioctl
+
+获取指定的 OTA 信息
+
+```
+int IOT_OTA_Ioctl(void *handle, IOT_OTA_CmdType type, void *buf, size_t buf_len);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| handle | void * | 输入 | IOT_OTA_Init 返回的句柄 |
+| type | IOT_OTA_CmdType | 输入 | 指定想要的信息 |
+| buf | void * | 输出 | 为数据交换指定缓冲区 |
+| buf_len | size_t | 输入 | buf 的长度 |
+| ret | int | 返回值 | <0: 失败  0: 成功 |
+
+**说明**
+
+* 如果 type==OTA_IOCTL_FETCHED_SIZE, 'buf' 需要传入 uint32_t 类型指针, 'buf_len' 需指定为 4
+
+* 如果 type==OTA_IOCTL_FILE_SIZE, 'buf' 需要传入 uint32_t 类型指针, 'buf_len' 需指定为 4
+
+* 如果 type==OTA_IOCTL_MD5SUM, 'buf' 需要传入 buffer, 'buf_len' 需指定为 33
+
+* 如果 type==OTA_IOCTL_VERSION, 'buf' 需要传入 buffer, 'buf_len' 需指定为 OTA_VERSION_LEN_MAX
+
+* 如果 type==OTA_IOCTL_CHECK_FIRMWARE, 'buf' 需要传入 uint32_t 类型指针, 'buf_len'需指定为 4 。返回：0, 固件MD5校验不通过, 固件无效; 1, 固件有效
+
+### IOT_OTA_GetLastError
+
+获取最后一个错误码
+
+```
+int IOT_OTA_GetLastError(void *handle);
+```
+
+**参数列表**
+
+| 参数 | 数据类型 | 参数类型 | 说明 |
+| --- | --- | --- | --- |
+| handle | void * | 输入 | IOT_OTA_Init 返回的句柄 |
+| ret | int | 返回值 | 对应错误的错误码 |
 
