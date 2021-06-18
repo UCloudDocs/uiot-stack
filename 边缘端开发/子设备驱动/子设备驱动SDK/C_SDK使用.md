@@ -116,6 +116,14 @@ int main(int argc, char **argv)
         status = edge_subdev_login_async(subdevClient);
     }
 
+    //订阅nats subject
+    status = nats_subscribe("/a/b/c");
+    if(EDGE_OK != status)
+    {
+        log_write(LOG_ERROR, "nats_subscribe nats topic fail");
+        return EDGE_ERR;
+    }
+
     while(1)
     {
         // 维持心跳,并周期发送消息
@@ -133,6 +141,21 @@ int main(int argc, char **argv)
         }
         */
         status = edge_publishString(topic_str, time_stamp);
+        //发送二进制消息
+        status |= edge_publish(topic_str, "0D0A2131", 8);
+        if(EDGE_OK != status)
+        {
+            log_write(LOG_ERROR, "edge_publish fail");
+            goto end;
+        }
+        //向先前订阅的nats subject发送消息
+        status = nats_publish("/a/b/c",time_stamp,strlen(time_stamp));
+        if(EDGE_OK != status)
+        {
+            log_write(LOG_ERROR, "edge_publish nats subject fail");
+            goto end;
+        }
+		
     }
 }
 ```
@@ -311,6 +334,46 @@ edge_status edge_publish(const char *topic, const char *data, int dataLen)
 | topic          | const char * | 发送消息的Topic       |
 | data           | const char * | 发送消息的Payload     |
 | dataLen        | int          | 发送消息的Payload长度 |
+
+**返回值**
+
+- 成功 - 返回EDGE_OK
+- 失败 - 返回类型参考：edge_status枚举
+
+### nats_publish
+
+```c
+edge_status nats_publish(const char *subject, const char *data, int dataLen)
+```
+
+向指定topic发布消息，可以发送二进制消息。
+
+**输入参数**
+
+| Parameter name | Type         | Description           |
+| -------------- | ------------ | ----------------------|
+| subject        | const char * | 发送消息的Subject     |
+| data           | const char * | 发送消息的Payload     |
+| dataLen        | int          | 发送消息的Payload长度 |
+
+**返回值**
+
+- 成功 - 返回EDGE_OK
+- 失败 - 返回类型参考：edge_status枚举
+
+### nats_subscribe
+
+```c
+edge_status nats_subscribe(const char *subject)
+```
+
+向指定topic发布消息，可以发送二进制消息。
+
+**输入参数**
+
+| Parameter name | Type         | Description           |
+| -------------- | ------------ | ----------------------|
+| subject        | const char * | 发送消息的Subject     |
 
 **返回值**
 

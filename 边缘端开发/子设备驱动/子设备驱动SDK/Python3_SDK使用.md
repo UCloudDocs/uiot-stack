@@ -579,4 +579,26 @@ EdgeDriverLinkException:code=1000xx,msg=xxxx
 EdgeDriverLinkException:code=1000xx,msg=xxxx
 ```
 
+**natsSubscribe() 函数**
+
+订阅nats subject
+
+返回值
+
+| Parameter name | Type    | Description |
+| -------------- | ------- | ----------- |
+| subject        | String  | /a/b/c      |
+| queue          | String  | test |
+| cb             | Function| 接收rrpc消息的回调函数 |
+
+**natsPublish() 函数**
+
+向nats subject发送数据
+
+返回值
+
+| Parameter name | Type    | Description |
+| -------------- | ------- | ----------- |
+| subject        | String  | /a/b/c      |
+| payload        | b:bytes | 发送消息的Payload |
 
