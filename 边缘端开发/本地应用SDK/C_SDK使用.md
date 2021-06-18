@@ -96,6 +96,15 @@ int main(int argc, char **argv)
     cJSON *topic_format = cJSON_GetObjectItem(app_info, "topic");
 
     snprintf(topic_str, 100, topic_format->valuestring, app_get_productSN(), app_get_deviceSN());
+    
+    //订阅nats subject
+    status = nats_subscribe("/a/b/c");
+    if(APP_OK != status)
+    {
+        log_write(LOG_ERROR, "nats_subscribe nats subject fail");
+        return APP_ERR;
+    }
+
     while(1)
     {    
         //每隔5秒上报当前时间
@@ -112,6 +121,14 @@ int main(int argc, char **argv)
         if(APP_OK!= status)
         {
             log_write(LOG_ERROR, "app_publish fail");
+            goto end;
+        }
+        
+        //向先前订阅的nats subject发送消息
+        status = nats_publish("/a/b/c",time_stamp,strlen(time_stamp));
+        if(APP_OK != status)
+        {
+            log_write(LOG_ERROR, "edge_publish nats subject fail");
             goto end;
         }
     }
@@ -246,3 +263,25 @@ app_status app_publish(const char *topic, const char *data, int dataLen)
 
 出参：执行结果，成功返回APP_OK
 
+**订阅nats subject**
+
+```
+app_status nats_subscribe(const char *subject)
+```
+
+入参：subject：	nats subject名称
+
+出参：执行结果，成功返回APP_OK
+
+**向nats subject发送消息，可以发送二进制内容**
+
+```
+app_status nats_publish(const char *subject, const char *data, int dataLen)
+```
+
+入参：subject：	nats subject名称  </br>
+      data： 	发送消息内容 </br>
+	  dataLen:  发送消息内容长度
+
+
+出参：执行结果，成功返回APP_OK
