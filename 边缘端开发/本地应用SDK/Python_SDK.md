@@ -46,6 +46,8 @@ zip -r app.zip
 * **[get_gateway_device_sn()](#get_gateway_device_sn)**
 * **[publish()](#publish)**
 * **[register_callback()](#register_callback)**
+* **[natsPublish()](#natsPublish)**
+* **[natsSubscribe()](#natsSubscribe)**
 
 ---
 <a name="getLogger"></a>
@@ -87,6 +89,23 @@ zip -r app.zip
 
 * cb`func`: 应用消息回调，例如：` def callback(topic:str, msg:bytes): print(str(msg,'utf-8')`
 * rrpc_cb`func`: 应用RRPC消息回调，例如：` def callback(topic:str, msg:bytes): print(str(msg,'utf-8')`
+
+---
+<a name="natsPublish"></a>
+### natsPublish()
+上报消息到nats subject。参数(subject: str, payload: bytes)
+
+* subject`str`: 上报消息到nats的mqtt subject。
+* payload`bytes`: 上报消息到Link IoT Edge的消息内容
+
+---
+<a name="natsSubscribe"></a>
+### natsSubscribe()
+上报消息到Link IoT Edge。参数(subject: str, queue: str, cb)
+
+* topic`str`: nats的mqtt subject。
+* queue`str`: 队列
+* cb: nats subject的回调函数
 
 ## Demo
 ```
