@@ -78,9 +78,7 @@ ProjectName|需操作的资源所属的项目
 Authorization|用户登录时获取的Token
 
 
-4. 获取Token  
-
-
+4. 获取Token，Token可在用户登陆后获取，参见[用户登陆](uiot-stack/IoT平台开发指南/账户及项目管理?id=用户登录)
 
 5. 请求接口获取响应
 
@@ -96,7 +94,7 @@ Authorization|用户登录时获取的Token
 
    ② 将请求参数转换成URL Params，拼接上Base URL进行GET请求：
      ```
-GET /api/v1/product/info?ProductSN=yihyugtyfytft HTTP/1.1
+   GET /api/v1/product/info?ProductSN=yihyugtyfytft HTTP/1.1
    Host: ${域名或IP}:8080
    Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VJRCI6MSwiUm9sZUlEIjoxLCJVc2VybmFtZSI6ImFkbWluIiwiZXhwIjoxNjAzODkzMzQ1LCJpc3MiOiJ1aW90IHN0YWNrLXVzZXIifQ.8ACQkiM6YSB4VgHJySGAlCQF_lTMsZ7dPo7F9xMwaWI
    ProjectName: default
