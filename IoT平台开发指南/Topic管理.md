@@ -4,7 +4,6 @@
 
 ```http
 POST /api/v1/topic/create HTTP/1.1
-Host: localhost:8080
 ```
 
 ###### 参数说明
@@ -54,7 +53,6 @@ POST JSON 参数
 
 ```http
 POST /api/v1/topic/list HTTP/1.1
-Host: localhost:8080
 ```
 
 ###### 参数说明
@@ -138,7 +136,6 @@ Host: localhost:8080
 
 ```http
 POST /api/v1/topic/update HTTP/1.1
-Host: localhost:8080
 ```
 
 ###### 参数说明
@@ -177,7 +174,6 @@ POST JSON 参数
 
 ```http
 Post /api/v1/topic/delete HTTP/1.1
-Host: localhost:8080
 ```
 
 ###### 参数说明
@@ -213,7 +209,6 @@ POST 参数
 
 ```http
 GET /api/v1/topic/info HTTP/1.1
-Host: localhost:8080
 ```
 
 ###### 参数说明
@@ -262,5 +257,4 @@ Query参数
     }
 }
 ```
-
 
